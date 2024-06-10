@@ -1,0 +1,27 @@
+{%load static%}
+
+<!DOCTYPE html>
+<html lang='en'> 
+
+<head>
+    <meta charset='UTF-8'> 
+    <meta name='viewport' content = 'width=device-width, initial-scale=1.0'>
+<head>
+
+<title> Ball Stat Pro </title> 
+<link rel="stylesheet" href={%static "styles.css"%}> 
+<link rel="icon" href="{% static 'Images/BerryBall.png' %}"> 
+
+<body>
+    <h1 class="header-text"> Ball Stat Pro </h1>
+    <div class="center-item">
+        <a href="{% url 'Home' %}">  <img src={% static 'Images/BerryBall.png' %} class = "logo-container"}> </a>
+    </div> 
+</body> 
+
+<div class = "center-item"> 
+
+<iframe src="{% static 'Table.html' %}" style="width: 175vmin; height:80vmin;">
+</iframe>   
+
+

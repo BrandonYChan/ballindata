@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+    <title>BallStatPro</title>
+
+    <link rel = "stylesheet" href = "{% static 'styles.css' %}"> 
+    <link rel = "icon" type="image/png", href="{% static 'Images/BerryBall.png' %}"> 
+
+    <body>
+        <h1 class="header-text"><b>Ball Stat Pro</b></h1>
+        
+        <div style="text-align:center">
+            <img src="{% static 'Images/BerryBall.png' %}", class = "logo-container"> 
+        </div>
+
+        <div class="center-item">
+            <div class="big-box">
+                <button onclick = "window.location.href = '{% url 'Stats' %}'" class = "wood-button">    
+                    <b>Stats</b>
+                </button>    
+                <button onclick = "window.location.href = '{% url 'Analysis' %}'" class = "wood-button"> 
+                    <b>Analysis</b>
+                </button>
+                <button onclick = "window.location.href = '{% url 'About' %}'" class = "wood-button">
+                    <b>About</b> 
+                </button>
+            </div>
+        </div>
+    </body>
+   
+</html>
+
+
