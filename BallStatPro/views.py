@@ -13,6 +13,14 @@ def analysis(request):
 
 def about(request): 
     return render(request, 'About.html')  
+
+def about_content(request):
+    return render(request, 'About-content.html')
     
-def greatest_season(request): 
-    return render(request, 'goat_season.html')
+def load_table(request, page_name):
+    template_name = f"Tables/{page_name}.html" 
+    return render(request, template_name) 
+
+def load_other(request, page_name):
+    template_name = f"Other/{page_name}.html" 
+    return render(request, template_name)

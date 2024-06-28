@@ -1,25 +1,24 @@
-{% load static %} 
+{% extends "Base.html" %} 
 
-<!DOCTYPE html> 
-<html lang="en"> 
+{% block content %}
+    <div class="center-item">
+        <div class="feed-box">
+            Which NBA Player had the Best MVP Season?
+        </div>
+    </div>
 
-<head> 
-    <meta charset = "UTF-8">
-    <meta name = "viewport" content = "width=device-width initial-scale=1.0"> 
-</head> 
+    <div class="center-item">
+        <div class="feed-box">
+            Who Were the Greatest Defenders in NBA History?
+        </div>
+    </div>
 
-<title> Ball Stat Pro </title> 
-
-<link rel = "stylesheet" href = "{% static 'styles.css' %}"> 
-<link rel="icon" href="{% static 'Images/BerryBall.png' %}"> 
-
-<body>
-    <h1 class = "header-text"> Ball Stat Pro </h1> 
-    <div class = "center-item">
-        <a href="{% url 'Home' %}"> <img src = "{% static 'Images/BerryBall.png' %}" class = "logo-container"> </a> 
+    <div class="center-item">
+        <div class="feed-box">
+            The Most Abnormal NBA Players Ever 
+        </div>
     </div> 
-    
-</body> 
+{% endblock %}
 
 
 

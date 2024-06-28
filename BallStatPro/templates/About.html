@@ -1,19 +1,11 @@
-{% load static %}  
+{% extends "Base.html" %} 
 
-<!DOCTYPE html> 
+{% block content %}  
 
-<head>
-    <meta charset="UTF-8"> 
-    <meta name="viewport" content="width=devce-width, initial-scale=1.0">
-</head> 
+    <div class="center-item"> 
+        <iframe src="{% url 'About-content' %}"
+         style="width:60vmin; height:65vmin;"> </iframe> 
+    </div> 
 
-<title> Ball Stat Pro </title> 
-<link rel="stylesheet" href="{% static 'styles.css' %}"> 
-<link rel="icon" href="{% static 'Images/BerryBall.png' %}"> 
-
-<body>
-    <h1 class="header-text"> Ball Stat Pro </h1> 
-    <div class="center-item">
-        <img src="{% static "Images/BerryBall.png" %}" class = "logo-container"> 
-    </item> 
+{% endblock %}
 

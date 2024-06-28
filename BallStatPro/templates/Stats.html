@@ -1,27 +1,23 @@
-{%load static%}
+{% extends "Base.html" %}
 
-<!DOCTYPE html>
-<html lang='en'> 
-
-<head>
-    <meta charset='UTF-8'> 
-    <meta name='viewport' content = 'width=device-width, initial-scale=1.0'>
-<head>
-
-<title> Ball Stat Pro </title> 
-<link rel="stylesheet" href={%static "styles.css"%}> 
-<link rel="icon" href="{% static 'Images/BerryBall.png' %}"> 
-
-<body>
-    <h1 class="header-text"> Ball Stat Pro </h1>
+{% block content %}
     <div class="center-item">
-        <a href="{% url 'Home' %}">  <img src={% static 'Images/BerryBall.png' %} class = "logo-container"}> </a>
+        <button onclick="loadPage('PerGame')" class="table-button"> 2023-24 </button>
+        <button onclick="loadPage('PerGame')" class="table-button"> Per Game </button>
+        <button onclick="loadPage('Totals')" class="table-button"> Totals </button> 
+        {% comment %} <button onclick="loadPage('Defense')" class="table-button"> Defense </button>  {% endcomment %}
     </div> 
-</body> 
+    
+    <div class = "center-item"> 
+        <iframe id = "contentFrame" src="{% url 'load_table' 'PerGame' %}" style="width: 150vmin; height: 65vmin;">
+        </iframe>   
+    </div> 
 
-<div class = "center-item"> 
-
-<iframe src="{% static 'Table.html' %}" style="width: 175vmin; height:80vmin;">
-</iframe>   
+    <script>
+        function loadPage(pageName){
+            document.getElementById('contentFrame').src = `/load_page/${pageName}/`; 
+        } 
+    </script> 
+{% endblock %}
 
 

@@ -1,19 +1,14 @@
 body{
-    background-color: rgb(230, 150, 0);
+    background-color: rgb(255, 152, 7);
     /* background-image: url("Images/e1a1d5b68991044e48a137f1185fcdb1.jpg"); */
     /* opacity: 0.5; */
 }
-.big-box{
+.button-container{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
-    
-    /* background-color: rgb(239, 191, 108); */
     width:70vmin;
     height:70vmin;
-    /* border-style: solid;
-    border-color: black; */
     border-radius: 30px; 
     margin: 3px;
 }
@@ -21,6 +16,21 @@ body{
     display: flex;
     text-align: center;
     justify-content: center;
+}
+.feed-box{
+    display:flex; 
+    background-color: white;
+    width:50vmin;
+    height:20vmin; 
+    border-radius: 8px;
+    margin:2vmin;
+    font-family:'calibri';
+    align-items: center;
+    justify-content: center; 
+    cursor: pointer;
+}
+.feed-box:hover{
+    opacity: 0.5;
 }
 .header-box{
     display: flex;
@@ -34,42 +44,64 @@ body{
 }
 .header-text {
     text-align: center;
-    font-size: 6vmin;
-    font-family: 'Segoe UI', sans-serif;
-    margin:5px;
+    font-size: 5vmin;
+    font-family: 'Calibri', sans-serif;
+    margin:3px;
 }
 .logo-container {
-    width:15vmin; 
+    width:12vmin; 
     height:auto; 
     margin:1vmin;
+    cursor:pointer;
 }
-.subheader-text{
-    text-align: center;
+.logo-container:hover{
+    opacity: 0.5;
+}
+.table-button{
+    background-color: white;
+    width:10vmin;
+    height:3vmin;
+    font-family:'calibri'; 
     font-size:14px;
-    font-family: 'Segoe UI', sans-serif
+    margin:0.1px;
+    border-radius:3px;
+    cursor:pointer;
 }
-.wood-button{
+.table-button:hover{
+    opacity:0.5;
+    background-color: rgb(175, 122, 31);
+}
+.table-container{
+    width: 100%; 
+    overflow-y: auto; 
+    /* margin:10vmin; */
+}
+thead th{
+    position: sticky; 
+    top:0;
+    background:#e28418;  
+    z-index: 1;
+}
+.home-button{
     display: block;
-    background-image: url("Images/360_F_137639340_bwbs5Ly8G9FjjX07WiBWoDJsakgNsy6K.jpg");
-    opacity:0.6; 
+    /* background-image: url("Images/360_F_137639340_bwbs5Ly8G9FjjX07WiBWoDJsakgNsy6K.jpg"); */
+    /* opacity:0.6;  */
 
-    background-color:rgb(175, 122, 31);
+    background-color:rgb(255, 255, 255);
+    border-radius:5px;
     width:50vmin;
     height:15vmin;
     justify-content:center;
     padding:4px;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     margin:2vmin;
     cursor:pointer;
 
     font-size:4vmin;
-    font-family:'Segoe UI', 'Arial';
+    font-family:'calibri', 'Arial';
 }
-
-.wood-button:hover{
-    background-color: rgb(255, 255, 255);
-    background-image: url("Images/e1a1d5b68991044e48a137f1185fcdb1.jpg");
-    /* opacity: 0.1; */
+.home-button:hover{
+    opacity: 0.5;
 }
 
 
