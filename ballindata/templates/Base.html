@@ -1,0 +1,36 @@
+{% load static %} 
+<!DOCTYPE html> 
+    <html lang="en"> 
+    <head>
+        <meta charset="UTF-8"> 
+        <meta name="viewport" content="width=device-width initial-scale=1.0">  
+    </head> 
+    <link rel="stylesheet" href="{% static 'styles.css' %}"> 
+    <link rel="icon" href="{% static 'Images/BerryBall.png' %}"> 
+    <title> Ball in Data </title> 
+
+    <body> 
+        <div class="header-box">
+            <button onclick="window.location.href = {% url 'Stats' %}" class = "header-button"> Stats </button> 
+            <button onclick="window.location.href = {% url 'Analysis' %}" class="header-button"> Analysis </button> 
+            <button onclick="window.location.href = {% url 'Tools' %}" class="header-button"> Tools </button> 
+        </div> 
+        <main>
+            <h1 class="header-text"> <b>Ball in Data</b> </h1> 
+            <div class="center-item">
+                <a href="{% url 'Stats' %}">  <img src="{% static 'Images/BerryBall.png' %}" class="logo-container"> </a> 
+            </div> 
+
+            <div id="content">
+                {% block content %}
+                {% endblock %}
+            </div> 
+        </main> 
+        {% comment %} <div class="center-item">  {% endcomment %}
+            <div class="footer-box">
+                <a href="{% url 'About' %}" style="font-size:3vmin;"> About </a> 
+            </div> 
+        {% comment %} </div>  {% endcomment %}
+    </body> 
+
+</html> 

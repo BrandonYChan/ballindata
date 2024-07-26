@@ -1,0 +1,204 @@
+a{
+    font-size:24px; 
+    font-family:calibri; 
+}
+body{
+    background-color: rgb(255, 152, 7);
+    /* background-image: url("Images/e1a1d5b68991044e48a137f1185fcdb1.jpg"); */
+    /* opacity: 0.5; */
+}
+.button-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width:70vmin;
+    height:70vmin;
+    border-radius: 20px; 
+    margin: 3px;
+}
+.center-item{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.dropdown{
+    /* position: relative; */
+    /* display: inline-block; */
+    /* background-color: white; */
+    width:33%;
+    margin-inline: 2px;
+    cursor:pointer; 
+}
+.dropdown-container{
+    width: 80%; 
+    /* height: 8vmin; */
+    /* border-width: 1px; */
+    display: flex;
+    /* align-items:center;  */
+    justify-content: center;
+}
+.dropdown-content{
+    display: none;
+    /* position: absolute;  */
+    background-color: rgb(255, 217, 152);
+    min-width: 10vmin;
+    max-height: 20vmin;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+.show{
+    display: block; 
+}
+.dropdown-button{
+    background-color: rgb(255, 219, 152);
+    width: 100%;
+    height: 4vmin;
+    font-family:'calibri'; 
+    font-size:2vmin;
+    margin:0.01px;
+    border-width: 0.1px;
+    cursor:pointer;
+}
+.dropdown-button:hover{
+    background-color: rgb(255, 191, 14); 
+    /* opacity: 0.5;  */
+}
+.feed-box{
+    display:flex; 
+    background-color: white;
+    width:50vmin;
+    height:20vmin; 
+    border-radius: 8px;
+    margin:2vmin;
+    font-family:'calibri';
+    align-items: center;
+    justify-content: center; 
+    cursor: pointer;
+}
+.feed-box:hover{
+    opacity: 0.5;
+}
+.footer-box{
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    width:100%;
+    background-color: rgb(255, 152, 7);
+    position: fixed;
+}
+.header-box{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-radius: 5px;
+    top:0;
+    left:0;
+    position:fixed;
+}
+.header-button{
+    width: 33.3%;
+    height: 15%;
+    font-size: 4vmin; 
+    font-family: 'calibri'; 
+    /* border-radius: 5px;  */
+    /* margin: 1px; */
+    background-color: rgb(255, 152, 7); 
+    border-width: 0.1vmin; 
+    z-index:1000;
+}
+.header-button:hover{
+    background-color: rgb(247, 180, 86);  
+    opacity: 0.5;
+    cursor: pointer; 
+}
+.header-text {
+    text-align: center;
+    font-size: 5vmin;
+    font-family: 'Calibri', sans-serif;
+    margin:1px;
+}
+.logo-container {
+    width:50%; 
+    height:auto; 
+    margin:1px;
+    cursor:pointer;
+}
+.logo-container:hover{
+    opacity: 0.5;
+}
+main{
+    margin-top: 4vmin; 
+    margin-bottom: 2vmin;
+    padding: 1vmin; 
+}
+.table-button{
+    background-color: white;
+    width:15%;
+    height:5vmin;
+    font-family:'calibri'; 
+    font-size:2.5vmin;
+    margin:1px;
+    border-radius:5px;
+    border-width: 1px;
+    cursor:pointer;
+}
+.table-button:hover{
+    opacity:0.5;
+    /* background-color: rgb(175, 122, 31); */
+}
+.table-container{
+    border-radius: 20px;
+    border-width: 3px;
+    width: 150vmin; 
+    height: 65vmin;
+    margin: 5px;
+    background-color: rgb(255, 255, 255);
+    /* overflow-x: scroll;  */
+    overflow-y: hidden; 
+    overflow-x: hidden;
+}
+.table-scroll{
+    width: 100%;
+    overflow-x: auto;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 9999;
+    background: #f0f0f0;
+}
+.table-scroll div{
+    width: 150vmin; 
+    height: 5vmin; 
+}
+thead th{
+    position: sticky; 
+    top:0;
+    background:#e28418;  
+    z-index: 1;
+}
+.home-button{
+    display: block;
+    /* background-image: url("Images/360_F_137639340_bwbs5Ly8G9FjjX07WiBWoDJsakgNsy6K.jpg"); */
+    /* opacity:0.6;  */
+
+    background-color:rgb(255, 255, 255);
+    border-radius:5px;
+    width:50vmin;
+    height:15vmin;
+    justify-content:center;
+    padding:4px;
+    /* border: 1px solid black; */
+    margin:2vmin;
+    cursor:pointer;
+
+    font-size:4vmin;
+    font-family:'calibri', 'Arial';
+}
+.home-button:hover{
+    opacity: 0.5;
+}
+
+

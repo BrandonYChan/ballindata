@@ -1,0 +1,85 @@
+{% extends "Base.html" %}
+
+
+{% block content %} 
+    <div class="center-item">
+        <div class="dropdown-container">
+
+            <div class="dropdown" id="output-dropdown">
+                <button id="output-button" class="table-button" style="width:100%"> Table↓</button> 
+                <div id="output-content" class="dropdown-content">
+                    <button onclick="showTable()" class="dropdown-button"> Table </button>
+                    <button onclick="showPlot()" class="dropdown-button"> Plot </button> 
+                </div>
+            </div>
+
+            <div class="dropdown" id="season-dropdown">
+                <button id="season-button" class="table-button" style="width:100%;">2023-24↓</button>
+                <div id="season-content" class="dropdown-content"> 
+                    {% comment %} <button onclick="seasonSelect('PerGame')" class="dropdown-button"> Current </button> {% endcomment %}
+                    <button onclick="seasonSelect('2023_24')" class="dropdown-button"> 2023-24 </button>
+                    <button onclick="seasonSelect('2022_23')" class="dropdown-button"> 2022-23 </button> 
+                    <button onclick="seasonSelect('2021_22')" class="dropdown-button"> 2021-22 </button> 
+                    <button onclick="seasonSelect('2020_21')" class="dropdown-button"> 2020-21 </button> 
+                    <button onclick="seasonSelect('2018_19')" class="dropdown-button"> 2018-19 </button> 
+                    <button onclick="seasonSelect('2017_18')" class="dropdown-button"> 2017-18 </button> 
+                    <button onclick="seasonSelect('2016_17')" class="dropdown-button"> 2016-17 </button> 
+                    <button onclick="seasonSelect('2015_16')" class="dropdown-button"> 2015-16 </button>  
+                </div>  
+            </div>  
+
+            <div class="dropdown" id="type-dropdown">
+                <button id="type-button" class="table-button" style="width:100%;">Averages↓</button>
+                <div id="type-content" class="dropdown-content"> 
+                    <button onclick="loadTable('Averages_')" class="dropdown-button"> Averages </button>
+                    <button onclick="loadTable('Totals_')" class="dropdown-button"> Totals </button> 
+                    <button onclick="loadTable('Advanced_')" class="dropdown-button"> Advanced </button> 
+                </div>  
+            </div>  
+        </div> 
+    </div> 
+    
+    <div class = "center-item"> 
+        <iframe id = "contentFrame" src="{% url 'load_table' 'PerGame' %}" class="table-container">
+        </iframe>   
+    </div> 
+
+    <script>
+        let season="2023_24";
+        let stat_type="Averages_"; 
+        function loadTable(stat){ 
+            stat_type = stat; 
+            document.getElementById('contentFrame').src = `/load_page/${stat_type.concat(season)}/`; 
+            button = document.getElementById('type-button'); 
+            button.innerHTML = stat_type.replace("_", "").concat("↓"); 
+            document.getElementById("output-button").innerHTML="Table↓"; 
+        } 
+        {% comment %} document.getElementById("type-button").onclick = function() {showDropdown("type-content")}; 
+        document.getElementById("season-button").onclick = function() {showDropdown("season-content")}; 
+        document.getElementById("output-button").onclick = function() {showDropdown("output-content")};  {% endcomment %}
+
+        function showDropdown(dropdown_name){
+            document.getElementById(dropdown_name).classList.toggle("show"); 
+        }
+        function seasonSelect(season_selected){
+            season = season_selected; 
+            loadTable(stat_type); 
+            button = document.getElementById('season-button');  
+            button.innerHTML = season.replace("_", "-").concat("↓"); 
+        }
+        function showPlot(){
+            document.getElementById('contentFrame').src = "/django_plotly_dash/app/chart/"; 
+            document.getElementById("output-button").innerHTML="Plot↓"; 
+            document.getElementById("season-dropdown").style.display="none"; 
+            document.getElementById("type-dropdown").style.display="none";
+            document.getElementById("output-dropdown").style.width="100%";
+        }
+        function showTable(){
+            document.getElementById("season-dropdown").style.display="block"; 
+            document.getElementById("type-dropdown").style.display="block";
+            document.getElementById("output-dropdown").style.width="33%"; 
+            loadTable(stat_type); 
+        }
+    </script> 
+{% endblock %}
+

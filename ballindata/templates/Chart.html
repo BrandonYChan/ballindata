@@ -1,0 +1,12 @@
+{% extends 'Base.html' %}
+
+{%block content%}
+{% load plotly_dash %} 
+{% plotly_header %}
+
+<div class='center-item'>
+    <iframe src = "/django_plotly_dash/app/chart/" class='table-container'></iframe> 
+</div> 
+{% plotly_footer %}
+{% endblock %}
+

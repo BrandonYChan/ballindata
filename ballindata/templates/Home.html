@@ -1,0 +1,19 @@
+{% extends "Base.html" %}
+
+{% block content %}
+    <div class="center-item">
+        <div class="button-container">
+            <button onclick = "window.location.href = '{% url 'Stats' %}'" class = "home-button">    
+                <b>Stats</b>
+            </button>    
+            <button onclick = "window.location.href = '{% url 'Analysis' %}'" class = "home-button"> 
+                <b>Analysis</b>
+            </button>
+            <button onclick = "window.location.href = '{% url 'About' %}'" class = "home-button">
+                <b>About</b> 
+            </button>
+        </div>
+    </div>
+{% endblock %}
+
+
