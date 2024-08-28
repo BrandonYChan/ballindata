@@ -3,7 +3,7 @@
 
 {% block content %} 
     <div class="center-item">
-        <div class="dropdown-container">
+        <div style="width:80%;display:flex;">
 
             <div class="dropdown" id="output-dropdown">
                 <button id="output-button" class="table-button" style="width:100%"> Table↓</button> 
@@ -11,7 +11,7 @@
                     <button onclick="showTable()" class="dropdown-button"> Table </button>
                     <button onclick="showPlot()" class="dropdown-button"> Plot </button> 
                 </div>
-            </div>
+            </div> 
 
             <div class="dropdown" id="season-dropdown">
                 <button id="season-button" class="table-button" style="width:100%;">2023-24↓</button>
@@ -92,7 +92,7 @@
         let stat_type="Averages_"; 
         function loadTable(stat){ 
             stat_type = stat; 
-            document.getElementById('contentFrame').src = `/load_page/${stat_type.concat(season)}/`; 
+            document.getElementById('contentFrame').src = `/load_table/${stat_type.concat(season)}/`; 
             button = document.getElementById('type-button'); 
             button.innerHTML = stat_type.replace("_", "").concat("↓"); 
             document.getElementById("output-button").innerHTML="Table↓"; 
@@ -112,11 +112,13 @@
             document.getElementById("season-dropdown").style.display="none"; 
             document.getElementById("type-dropdown").style.display="none";
             document.getElementById("output-dropdown").style.width="100%";
+            document.getElementById("output-content").style.width = "75%";
         }
         function showTable(){
             document.getElementById("season-dropdown").style.display="block"; 
             document.getElementById("type-dropdown").style.display="block";
             document.getElementById("output-dropdown").style.width="33%"; 
+            document.getElementById("output-content").style.width = "25%";
             loadTable(stat_type); 
         }
 

@@ -18,7 +18,7 @@
         <main>
             <h1 class="header-text"> <b>Ball in Data</b> </h1> 
             <div class="center-item">
-                <a href="{% url 'Stats' %}">  <img src="{% static 'Images/BerryBall.png' %}" class="logo-container"> </a> 
+                <a href="{% url 'Home' %}">  <img src="{% static 'Images/BerryBall.png' %}" class="logo-container"> </a> 
             </div> 
 
             <div id="content">
@@ -27,8 +27,8 @@
             </div> 
         </main> 
         {% comment %} <div class="center-item">  {% endcomment %}
-            <div class="footer-box">
-                <a href="{% url 'About' %}" class="footer-link"> About </a> 
+            <div class="footer-box"> 
+                <a href="{% url 'About' %}" style="color:white;font-size:3vmin;"> About </a> 
             </div> 
         {% comment %} </div>  {% endcomment %}
     </body> 

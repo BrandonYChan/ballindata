@@ -1,11 +1,51 @@
 {% extends "Base.html" %} 
 
-{% comment %} {% block content %}
+{% block content %} 
+<div class="center-item">
+    <div class="dropdown" id="output-dropdown" style="width:80%">
+        <button id="tool-button" class="table-button" style="width:100%;" onclick="showDropdown()"> All-Star Prediction Tool↓</button>  
+        <div id="output-content" class="click-dropdown-content">
+            <button id="Tools-AS" onclick="loadTool('Tools-AS')" class="dropdown-button"> All-Star Prediction Tool </button>
+        </div>
+    </div>
+</div> 
+<div class="center-item"> 
+    <iframe id="toolFrame" class="tool-container" src="{% url 'load_tool' 'Tools-AS' %}", style="width:80%;"></iframe>  
+</div> 
 
-{% load plotly_dash %} 
-{% plotly_header %}
+<script>
+    function loadTool(title){ 
+        document.getElementById('toolFrame').src = `/load_tool/${title}/`;  
+        button = document.getElementById('tool-button'); 
+        button.innerHTML = document.getElementById(title).innerHTML.concat("↓"); 
+    } 
 
-{% plotly_app name="player_chart" %}
-{% plotly_footer %} {% endcomment %}
+    function showDropdown() { 
+        document.getElementById("output-content").classList.toggle("show"); 
+    }
 
-{% endblock %}
+    window.onclick = function(event) {
+      handleClick(event);
+    };
+  
+  function handleClick(event) { 
+      if (!event.target.matches('.table-button')) {
+          var dropdowns = document.getElementsByClassName("click-dropdown-content"); 
+          for (var i = 0; i < dropdowns.length; i++) {
+              var openDropdown = dropdowns[i];
+              if (openDropdown.classList.contains('show')) {
+                  openDropdown.classList.remove('show');
+              }
+          }
+      }
+  }  
+  
+  var iframe = document.getElementById("toolFrame");
+    iframe.contentWindow.document.addEventListener('click', function(event) {
+        console.log("iframe clicked");
+        handleClick(event);
+    });
+
+</script> 
+
+{% endblock %} 
