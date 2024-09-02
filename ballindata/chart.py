@@ -9,7 +9,7 @@ import logging, os, sys
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname('functions.py'), 'C:\\Users\\bchan\\OneDrive\\Personal Projects\\BID_Django\\ballindata\\PY'))) 
 import functions  
 
-seasons = functions.generate_seasons(1973, 2024)
+seasons = functions.generate_seasons(1979, 2024)
 
 engine = sqlalchemy.create_engine('sqlite:///C:\\Users\\bchan\\OneDrive\\Personal Projects\\BID_Django\\ballindata\\DB\\ballbase.db') 
 dfs = [] 
@@ -20,14 +20,11 @@ for i in range(len(seasons)):
     dfs.append(df) 
 
 
-master = (pd.concat(dfs, axis=0)
-          .rename(columns={'TRB':'RPG', 'AST':'APG', 'PTS':'PPG'}) 
-)
-
+master = pd.concat(dfs, axis=0)
 app = DjangoDash('chart') 
 
 app.layout = html.Div(children=[
-    html.Div(children=[dcc.RadioItems(options=['PPG', 'APG', 'RPG', '3P%', 'FG%', 'FT%', 'STL', 'BLK', 'TOV', 'PF', 'G', 'MP', 'DRtg', 'ORtg', 'WS', 'DWS'], value='PPG', id='controls', inline=True)], style={'text-align':'center', 'font-family':'calibri'}),
+    html.Div(children=[dcc.RadioItems(options=['PPG', 'APG', 'RPG', '3P%', 'FG%', 'FT%', 'SPG', 'BPG', 'ToPG', 'PF', 'GP', 'MP', 'DRtg', 'ORtg', 'WS', 'DWS'], value='PPG', id='controls', inline=True)], style={'text-align':'center', 'font-family':'calibri'}),
     html.Div(children=[dcc.Dropdown(master.Player.unique(), value='LeBron James', id='dropdown-selection')], style={'font-family':'calibri'}), 
     html.Div( children=[dcc.Graph(figure={}, id='graph-content')]) 
 ], style={'background-color':'rgb(228, 138, 12)'}) 
