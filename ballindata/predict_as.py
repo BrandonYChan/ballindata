@@ -3,7 +3,8 @@ import tensorflow as tf, sqlalchemy
 from sklearn.linear_model import LogisticRegression, LinearRegression 
 import joblib 
 from keras.models import load_model 
-
+import os 
+from django.conf import settings 
 
 db_path = 'sqlite:///C:\\Users\\bchan\\OneDrive\\Personal Projects\\BID_Django\\ballindata\\DB\\ballbase.db' 
 engine = sqlalchemy.create_engine(db_path) 
@@ -11,7 +12,6 @@ master = pd.read_sql("master_as", con=engine)
 numeric_df = pd.read_sql("numeric_as", con=engine)  
 rf = joblib.load("C:\\Users\\bchan\OneDrive\Personal Projects\BID_Django\\ballindata\IPYNB\Analyses\\rf_model.pkl") 
 lr = joblib.load("C:\\Users\\bchan\OneDrive\Personal Projects\BID_Django\\ballindata\IPYNB\Analyses\lr_model.pkl") 
-
 nn = load_model("C:\\Users\\bchan\OneDrive\Personal Projects\BID_Django\\ballindata\IPYNB\Analyses\seq_model.keras") 
 
 def make_prediction(data, selected_model):

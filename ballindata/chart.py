@@ -5,13 +5,16 @@ import pandas as pd
 pd.set_option('display.max_columns', None)
 import sqlite3, sqlalchemy 
 import logging, os, sys 
+from django.conf import settings 
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname('functions.py'), 'C:\\Users\\bchan\\OneDrive\\Personal Projects\\BID_Django\\ballindata\\PY'))) 
+# sys.path.append(os.path.abspath(os.path.join(os.path.dirname('functions.py'), 'C:\\Users\\bchan\\OneDrive\\Personal Projects\\BID_Django\\ballindata\\PY'))) 
+sys.path.append(os.path.join(settings.BASE_DIR, 'ballindata/PY')) 
+
 import functions  
 
 seasons = functions.generate_seasons(1979, 2024)
 
-engine = sqlalchemy.create_engine('sqlite:///C:\\Users\\bchan\\OneDrive\\Personal Projects\\BID_Django\\ballindata\\DB\\ballbase.db') 
+engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
 dfs = [] 
 
 for i in range(len(seasons)):
