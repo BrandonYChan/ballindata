@@ -43,7 +43,7 @@ table = $('table').DataTable({
     fixedHeader:true,
     paging: false,
     scrollX: true, 
-    scrollY:'75vmin', 
+    scrollY:'80vmin', 
     info:false,
 })
 

@@ -10,351 +10,196 @@
     <title> Ball in Data </title> 
 
     <body style="background-color:rgb(35, 35, 35);"> 
+        <div class="center-item">
+            <div id="prediction-result" class="tool-output"> Prediction Result </div> 
+        </div> 
+        <br> 
         <main> 
-            <form>
-                <div class="input-row"> 
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box" value="Default"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="blk" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="blk" name="blk" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-                <br> 
+            <form id="prediction-form" method="POST", action="{%url 'predict_allstar'%}">
+                {% csrf_token %}
                 <div class="input-row">
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
+                    <label for="Age" class="input-label"> Age: </label><br>
+                        <input type="text" id=Age name=Age class="input-text-box" value=""><br>
+                        <label for="GP" class="input-label"> GP: </label><br>
+                        <input type="text" id=GP name=GP class="input-text-box" value=""><br>
+                        <label for="MPG" class="input-label"> MPG: </label><br>
+                        <input type="text" id=MPG name=MPG class="input-text-box" value=""><br>
+                        <label for="FG" class="input-label"> FG: </label><br>
+                        <input type="text" id=FG name=FG class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="FGA" class="input-label"> FGA: </label><br>
+                        <input type="text" id=FGA name=FGA class="input-text-box" value=""><br>
+                        <label for="FG%" class="input-label"> FG%: </label><br>
+                        <input type="text" id=FG% name=FG% class="input-text-box" value=""><br>
+                        <label for="3P" class="input-label"> 3P: </label><br>
+                        <input type="text" id=3P name=3P class="input-text-box" value=""><br>
+                        <label for="3PA" class="input-label"> 3PA: </label><br>
+                        <input type="text" id=3PA name=3PA class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="3P%" class="input-label"> 3P%: </label><br>
+                        <input type="text" id=3P% name=3P% class="input-text-box" value=""><br>
+                        <label for="2P" class="input-label"> 2P: </label><br>
+                        <input type="text" id=2P name=2P class="input-text-box" value=""><br>
+                        <label for="2PA" class="input-label"> 2PA: </label><br>
+                        <input type="text" id=2PA name=2PA class="input-text-box" value=""><br>
+                        <label for="2P%" class="input-label"> 2P%: </label><br>
+                        <input type="text" id=2P% name=2P% class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="eFG%" class="input-label"> eFG%: </label><br>
+                        <input type="text" id=eFG% name=eFG% class="input-text-box" value=""><br>
+                        <label for="FT" class="input-label"> FT: </label><br>
+                        <input type="text" id=FT name=FT class="input-text-box" value=""><br>
+                        <label for="FTA" class="input-label"> FTA: </label><br>
+                        <input type="text" id=FTA name=FTA class="input-text-box" value=""><br>
+                        <label for="FT%" class="input-label"> FT%: </label><br>
+                        <input type="text" id=FT% name=FT% class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="ORPG" class="input-label"> ORPG: </label><br>
+                        <input type="text" id=ORPG name=ORPG class="input-text-box" value=""><br>
+                        <label for="DRPG" class="input-label"> DRPG: </label><br>
+                        <input type="text" id=DRPG name=DRPG class="input-text-box" value=""><br>
+                        <label for="RPG" class="input-label"> RPG: </label><br>
+                        <input type="text" id=RPG name=RPG class="input-text-box" value=""><br>
+                        <label for="APG" class="input-label"> APG: </label><br>
+                        <input type="text" id=APG name=APG class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="SPG" class="input-label"> SPG: </label><br>
+                        <input type="text" id=SPG name=SPG class="input-text-box" value=""><br>
+                        <label for="BPG" class="input-label"> BPG: </label><br>
+                        <input type="text" id=BPG name=BPG class="input-text-box" value=""><br>
+                        <label for="ToPG" class="input-label"> ToPG: </label><br>
+                        <input type="text" id=ToPG name=ToPG class="input-text-box" value=""><br>
+                        <label for="PF" class="input-label"> PF: </label><br>
+                        <input type="text" id=PF name=PF class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="PPG" class="input-label"> PPG: </label><br>
+                        <input type="text" id=PPG name=PPG class="input-text-box" value=""><br>
+                        <label for="T2P" class="input-label"> T2P: </label><br>
+                        <input type="text" id=T2P name=T2P class="input-text-box" value=""><br>
+                        <label for="T2PA" class="input-label"> T2PA: </label><br>
+                        <input type="text" id=T2PA name=T2PA class="input-text-box" value=""><br>
+                        <label for="T3P" class="input-label"> T3P: </label><br>
+                        <input type="text" id=T3P name=T3P class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="T3PA" class="input-label"> T3PA: </label><br>
+                        <input type="text" id=T3PA name=T3PA class="input-text-box" value=""><br>
+                        <label for="TAST" class="input-label"> TAST: </label><br>
+                        <input type="text" id=TAST name=TAST class="input-text-box" value=""><br>
+                        <label for="TBLK" class="input-label"> TBLK: </label><br>
+                        <input type="text" id=TBLK name=TBLK class="input-text-box" value=""><br>
+                        <label for="TDRB" class="input-label"> TDRB: </label><br>
+                        <input type="text" id=TDRB name=TDRB class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="TFG" class="input-label"> TFG: </label><br>
+                        <input type="text" id=TFG name=TFG class="input-text-box" value=""><br>
+                        <label for="TFGA" class="input-label"> TFGA: </label><br>
+                        <input type="text" id=TFGA name=TFGA class="input-text-box" value=""><br>
+                        <label for="TFT" class="input-label"> TFT: </label><br>
+                        <input type="text" id=TFT name=TFT class="input-text-box" value=""><br>
+                        <label for="TFTA" class="input-label"> TFTA: </label><br>
+                        <input type="text" id=TFTA name=TFTA class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="TMP" class="input-label"> TMP: </label><br>
+                        <input type="text" id=TMP name=TMP class="input-text-box" value=""><br>
+                        <label for="TORB" class="input-label"> TORB: </label><br>
+                        <input type="text" id=TORB name=TORB class="input-text-box" value=""><br>
+                        <label for="TPF" class="input-label"> TPF: </label><br>
+                        <input type="text" id=TPF name=TPF class="input-text-box" value=""><br>
+                        <label for="TPTS" class="input-label"> TPTS: </label><br>
+                        <input type="text" id=TPTS name=TPTS class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="TSTL" class="input-label"> TSTL: </label><br>
+                        <input type="text" id=TSTL name=TSTL class="input-text-box" value=""><br>
+                        <label for="TTOV" class="input-label"> TTOV: </label><br>
+                        <input type="text" id=TTOV name=TTOV class="input-text-box" value=""><br>
+                        <label for="TTRB" class="input-label"> TTRB: </label><br>
+                        <input type="text" id=TTRB name=TTRB class="input-text-box" value=""><br>
+                        <label for="DRtg" class="input-label"> DRtg: </label><br>
+                        <input type="text" id=DRtg name=DRtg class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="ORtg" class="input-label"> ORtg: </label><br>
+                        <input type="text" id=ORtg name=ORtg class="input-text-box" value=""><br>
+                        <label for="3PAr" class="input-label"> 3PAr: </label><br>
+                        <input type="text" id=3PAr name=3PAr class="input-text-box" value=""><br>
+                        <label for="AST%" class="input-label"> AST%: </label><br>
+                        <input type="text" id=AST% name=AST% class="input-text-box" value=""><br>
+                        <label for="BLK%" class="input-label"> BLK%: </label><br>
+                        <input type="text" id=BLK% name=BLK% class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="BPM" class="input-label"> BPM: </label><br>
+                        <input type="text" id=BPM name=BPM class="input-text-box" value=""><br>
+                        <label for="DBPM" class="input-label"> DBPM: </label><br>
+                        <input type="text" id=DBPM name=DBPM class="input-text-box" value=""><br>
+                        <label for="DRB%" class="input-label"> DRB%: </label><br>
+                        <input type="text" id=DRB% name=DRB% class="input-text-box" value=""><br>
+                        <label for="DWS" class="input-label"> DWS: </label><br>
+                        <input type="text" id=DWS name=DWS class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="FTr" class="input-label"> FTr: </label><br>
+                        <input type="text" id=FTr name=FTr class="input-text-box" value=""><br>
+                        <label for="OBPM" class="input-label"> OBPM: </label><br>
+                        <input type="text" id=OBPM name=OBPM class="input-text-box" value=""><br>
+                        <label for="ORB%" class="input-label"> ORB%: </label><br>
+                        <input type="text" id=ORB% name=ORB% class="input-text-box" value=""><br>
+                        <label for="OWS" class="input-label"> OWS: </label><br>
+                        <input type="text" id=OWS name=OWS class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="PER" class="input-label"> PER: </label><br>
+                        <input type="text" id=PER name=PER class="input-text-box" value=""><br>
+                        <label for="STL%" class="input-label"> STL%: </label><br>
+                        <input type="text" id=STL% name=STL% class="input-text-box" value=""><br>
+                        <label for="TOV%" class="input-label"> TOV%: </label><br>
+                        <input type="text" id=TOV% name=TOV% class="input-text-box" value=""><br>
+                        <label for="TRB%" class="input-label"> TRB%: </label><br>
+                        <input type="text" id=TRB% name=TRB% class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="TS%" class="input-label"> TS%: </label><br>
+                        <input type="text" id=TS% name=TS% class="input-text-box" value=""><br>
+                        <label for="USG%" class="input-label"> USG%: </label><br>
+                        <input type="text" id=USG% name=USG% class="input-text-box" value=""><br>
+                        <label for="VORP" class="input-label"> VORP: </label><br>
+                        <input type="text" id=VORP name=VORP class="input-text-box" value=""><br>
+                        <label for="WS" class="input-label"> WS: </label><br>
+                        <input type="text" id=WS name=WS class="input-text-box" value=""><br>
+                        
+                    </div> 
+                    <br> 
+                    <div class="input-row"> <label for="WS/48" class="input-label"> WS/48: </label><br>
+                        <input type="text" id=WS/48 name=WS/48 class="input-text-box" value=""><br>
+                        
+                    </div>
+                    <br><br> 
 
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-                <br> 
-
-                <div class="input-row">
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-                <br> 
-
-                <div class="input-row">
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-                <br> 
-
-                <div class="input-row">
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-                <br> 
-
-                <div class="input-row">
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-                <br> 
-
-                <div class="input-row">
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-                <br> 
-
-                <div class="input-row">
-                    <label for="age" class="input-label"> AGE: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="age" name="age" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="pts" class="input-label"> PTS: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="pts" name="pts" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="trb" class="input-label"> TRB: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="trb" name="trb" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="ast" class="input-label"> AST: </label><br>
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="ast" name="ast" class="input-text-box"><br>
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> STL: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="stl" class="input-label"> BLK: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="stl" name="stl" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="tov" class="input-label"> TOV: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="tov" name="tov" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-
-                    <label for="mp" class="input-label"> MP: </label><br> 
-                    <div style="width:2vmin;"></div> 
-                    <input type="text" id="mp" name="mp" class="input-text-box"><br> 
-                    <div style="width:4vmin;"></div> 
-                </div> 
-            </main> 
-            <br> 
             <div class="iframe-footer center-item"> 
                 {% comment %} <div class="center-item">  {% endcomment %}
                     <div style="display:flex;align-items:center;">
@@ -362,17 +207,31 @@
                     </div> 
                         <div style="width:2vmin;"></div> 
                     <select name="model" id="model">
-                        <option value="logistic-regression">Logistic Regression</option>
-                        <option value="neural-net">Neural Network</option>
-                        <option value="random-forest">Random Forest</option> 
+                        <option value="logistic_regression">Logistic Regression</option>
+                        <option value="neural_network">Neural Network</option>
+                        <option value="random_forest">Random Forest</option> 
                     </select>
-                {% comment %} </div>  {% endcomment %}
-                {% comment %} <br>  {% endcomment %}
-                {% comment %} <div class="center-item"> {% endcomment %}
                     <input type="submit" value="Submit" class="input-submit"> 
-                {% comment %} </div>  {% endcomment %}
             </div> 
         </form> 
         <br> 
     </body>
 </html> 
+<script>
+    document.getElementById('prediction-form').onsubmit = async function(event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        const formData = new FormData(this);
+
+        // Send the form data to the Django view
+        const response = await fetch("{% url 'predict_allstar' %}", {
+            method: 'POST',
+            body: formData
+        });
+
+        const result = await response.json(); // Parse the JSON response
+
+        // Update the prediction result on the page
+        document.getElementById('prediction-result').textContent = result.prediction;
+    };
+</script>

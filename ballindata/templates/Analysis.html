@@ -1,10 +1,10 @@
 {% extends "Base.html" %} 
 
 {% block content %}
-    <div class="center-item">
-        <div class="dropdown" id="output-dropdown" style="width:80%">
+    <div class="center-item dropdown-container"> 
+        <div class="dropdown" id="output-dropdown" style="width:100%;">
             <button id="analysis-button" onclick="showDropdown()" class="table-button" style="width:100%"> What Makes an All-Star↓ </button>  
-            <div id="output-content" class="click-dropdown-content">
+            <div id="output-content" class="dropdown-content">
                 <button onclick="loadAnalysis('star')" id ="star" class="dropdown-button"> What Makes an All-Star </button> 
             </div>
         </div>
@@ -13,7 +13,7 @@
         <button id="full-screen" class="full-screen-button" onclick="fullScreen()"> Fullscreen </button> 
     </div> 
     <div class="center-item"> 
-        <iframe id="analysisFrame" class="analysis-container" src="{% url 'load_analysis' 'star' %}", style="width:80%;height:60vmin;"></iframe> 
+        <iframe id="analysisFrame" class="analysis-container" src="{% url 'load_analysis' 'star' %}"></iframe> 
     </div> 
 
     <script>
@@ -21,7 +21,7 @@
             container = document.getElementById('analysisFrame'); 
             if (container.classList.contains('full-screen')) {
                 container.classList.remove('full-screen');
-                document.getElementById("analysisFrame").style = "width:80%;height:60vmin;";  
+                document.getElementById("analysisFrame").className = "analysis-container";  
                 document.getElementById("full-screen").style = "none"; 
                 document.getElementById("full-screen").innerHTML = "Fullscreen"; 
                 
@@ -29,7 +29,7 @@
             else{
                 document.getElementById("analysisFrame").className = "full-screen";
                 document.getElementById("analysisFrame").style = "none";
-                document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px; z-index:3;"; 
+                document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px; z-index:3; width:100%;"; 
                 document.getElementById("full-screen").innerHTML = "Exit Fullscreen"; 
             }
         }
@@ -45,21 +45,17 @@
         window.onclick = function(event) { 
           handleClick(event);
         };
-      
-        function showDropdown() { 
-            document.getElementById("output-content").classList.toggle("show"); 
-        }
-      function handleClick(event) { 
-          if (!event.target.matches('.table-button')) {
-              var dropdowns = document.getElementsByClassName("click-dropdown-content"); 
-              for (var i = 0; i < dropdowns.length; i++) {
-                  var openDropdown = dropdowns[i];
-                  if (openDropdown.classList.contains('show')) {
-                      openDropdown.classList.remove('show');
-                  }
-              }
-          }
-      } 
+        function handleClick(event) { 
+            if (!event.target.matches('.table-button')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content"); 
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        } 
     </script> 
 {% endblock %}
 

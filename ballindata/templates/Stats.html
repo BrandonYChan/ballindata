@@ -3,14 +3,13 @@
 
 {% block content %} 
     <div class="center-item">
-        <div style="width:80%;display:flex;">
-
+        <div class="dropdown-container"> 
             <div class="dropdown" id="output-dropdown">
                 <button id="output-button" class="table-button" style="width:100%"> Table↓</button> 
                 <div id="output-content" class="dropdown-content">
                     <button onclick="showTable()" class="dropdown-button"> Table </button>
                     <button onclick="showPlot()" class="dropdown-button"> Plot </button> 
-                </div>
+                </div> 
             </div> 
 
             <div class="dropdown" id="season-dropdown">
@@ -112,20 +111,39 @@
             document.getElementById("season-dropdown").style.display="none"; 
             document.getElementById("type-dropdown").style.display="none";
             document.getElementById("output-dropdown").style.width="100%";
-            document.getElementById("output-content").style.width = "75%";
         }
         function showTable(){
             document.getElementById("season-dropdown").style.display="block"; 
             document.getElementById("type-dropdown").style.display="block";
             document.getElementById("output-dropdown").style.width="33%"; 
-            document.getElementById("output-content").style.width = "25%";
             loadTable(stat_type); 
         }
 
-        // document.getElementById("type-button").onclick = function() {showDropdown("type-content")}; 
-        // document.getElementById("season-button").onclick = function() {showDropdown("season-content")}; 
-        // document.getElementById("output-button").onclick = function() {showDropdown("output-content")};  
-
+        {% comment %} function showOutputDropdown() { 
+            document.getElementById("output-content").classList.toggle("show"); 
+        }
+        function showSeasonDropdown() { 
+            document.getElementById("season-content").classList.toggle("show"); 
+        }
+        function showTypeDropdown() { 
+            document.getElementById("type-content").classList.toggle("show"); 
+        } {% endcomment %}
+    
+        window.onclick = function(event) {
+          handleClick(event);
+        };
+      
+        function handleClick(event) { 
+            if (!event.target.matches('.table-button')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content"); 
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }  
     </script> 
 {% endblock %}
 

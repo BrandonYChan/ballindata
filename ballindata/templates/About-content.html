@@ -1,32 +1,43 @@
+{% load static %}
 <!DOCTYPE html> 
 <html lang="en"> 
     <head> 
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width initial-scale=1.0">
+        <meta name="viewport" content="width=device-width initial-scale=1.0"> 
+        <link rel="stylesheet" href="{% static 'styles.css' %}"> 
 
         <style>
             body{
-                background-color: rgb(255,255,255); 
-                font-family:"calibri"; 
+                font-family:calibri; 
+                color:white;
+                background-color: rgb(35, 35, 35); 
             }
         </style>
     </head> 
 
 
-    <body>
-        <h2> Stats </h2> 
+    <body style="">
+        <h2> Stats Page </h2> 
         <p>
-            This page contains tables of NBA player statistics broken down by category. 
-            I plan to add more seasons and historical data in the future. 
-            The data is from the stats.nba.com API, which I wrangled to form my own custom tables in Python.  
-            The tables are then uploaded to a SQL database from my Python script, which I access from another script and export to the HTML file. 
+            - Customize tables and plots of NBA player data 
+            <br> 
+            - Data organized by season and stat type 
         </p>
-        <h2> Analysis </h2> 
+        <h2> Analysis Page </h2> 
         <p>
-            Data science analyses on NBA topics are here on this page. 
-            The idea is to combine my personal insights with machine learning methods to solve interesting questions.
-            I think that there is a lot of overlap between statisitics and entertainment in the NBA, which I hope to show through statistics, explanations and data visualization. 
+            - Analyzing machine learning applications on NBA data 
+            <br> 
+            - Comprehensive explanation and visualization 
         </p> 
+        <h2> Tools Page </h2> 
+        <p>
+            - Feed input to machine learning models and receive predictions 
+            <br> 
+            - Stats left empty or with extraneous input default to the mean 
+            <br> 
+            - Models perform poorly with inputs left blank due to relationships between variables 
+        </p> 
+        
     </body>
 
 
