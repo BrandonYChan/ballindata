@@ -14,7 +14,7 @@ a{
     width: 100%; 
     height: 50vmin; 
     border-width: 2px; 
-    border-color: blueviolet;
+    border-color: rgb(243, 148, 60);
 }
 body{
     background-color: rgb(228, 116, 12); 
@@ -40,7 +40,7 @@ body{
     max-height: 20vmin;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    background-color: blueviolet;
+    background-color: rgb(243, 148, 60);
     width: 100%; 
 }
 .dropdown{ 
@@ -79,7 +79,7 @@ body{
     left:0;
     top:100%;
     overflow: auto;
-    background-color: blueviolet; 
+    background-color: rgb(243, 148, 60); 
     /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
 } 
 .dropdown-content.show{
@@ -103,7 +103,7 @@ body{
     justify-content: center; 
     cursor: pointer;
 }
-.feed-box:hover{
+.feed-box:hover{ 
     opacity: 0.5;
 }
 .footer-box{ 
@@ -115,7 +115,7 @@ body{
     width:100%;
     background-color: rgb(35, 35, 35); 
     color: white; 
-    font-size: 3vmin; 
+    font-size: 2.5vmin; 
     position: fixed;
     font-family: 'calibri'; 
 }
@@ -136,14 +136,15 @@ body{
 .full-screen-button{
     font-size: 2vmin; 
     font-family: calibri; 
-    background-color: rgb(255, 255, 255); 
+    background-color: rgb(243, 148, 60); 
     color: rgb(0, 0, 0); 
     width: 100%; 
     border:none;
+    opacity: 0.9;
 }
 .full-screen-button:hover{
     /* opacity: 0.2; */
-    background-color: blueviolet;
+    background-color: rgb(243, 148, 60);
     border-bottom: 4px;
     border-color: black; 
 }
@@ -184,7 +185,7 @@ body{
     color: rgb(255, 255, 255);  
     border-radius:5px;
     border-width: 1px;
-    border-color: blueviolet;
+    border-color: rgb(243, 148, 60);
     width:50vmin;
     height:15vmin;
     justify-content:center;
@@ -200,14 +201,14 @@ body{
     display: flex; 
     bottom: 1vmin; 
     width:100%;
-    /* background-color: rgb(0, 0, 0);  */
+    background-color: rgb(35, 35, 35); 
     position: fixed; 
 }
 .input-dropdown{
     font-family: calibri;
     font-size: 4vmin;  
     border-width: 2px; 
-    border-color: blueviolet; 
+    border-color: rgb(243, 148, 60); 
 }
 .input-label{
     font-weight: normal; 
@@ -229,15 +230,16 @@ body{
     font-size: 4vmin; 
     box-shadow: 1vmin; 
     box-shadow: 1px 1px 1px purple;
-    background-color: blueviolet; 
+    background-color: rgb(243, 148, 60); 
 }
 .input-submit:hover{
     opacity: 0.9; 
 }
 .input-text-box{
     width: 10%;  
+    max-width: 8vmin;
     border-width: 2px;
-    border-color: blueviolet; 
+    border-color: rgb(243, 148, 60); 
 }
 .logo-container {
     width:12vmin; 
@@ -264,17 +266,16 @@ main{
     margin:1px;
     border-radius:5px;
     border-width: 2px;
-    border-color: blueviolet;
+    border-color: rgb(243, 148, 60);
     cursor:pointer;
 }
 .table-button:hover{
     opacity:0.2;
-    /* background-color: rgb(175, 122, 31); */
 }
 .table-container{
     border-radius: 20px; 
     border-width: 1px; 
-    border-color: blueviolet;
+    border-color: rgb(243, 148, 60);
     width: 100%; 
     height: 60vmin;
     margin: 5px;
@@ -283,31 +284,22 @@ main{
     overflow-y: hidden; 
     overflow-x: hidden;
 }
-/* .table-scroll{
-    width: 100%;
-    overflow-x: auto;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    z-index: 9999;
-    background: #f0f0f0;
-} */
 .table-scroll div{ 
     width: 150vmin; 
     height: 5vmin; 
     border-width:1px; 
-    border-color: blueviolet;
+    border-color: rgb(243, 148, 60);
 }
 .tool-container{
     width:100%; 
     height: 60vmin; 
     border-width:1px; 
-    border-color: blueviolet;
+    border-color: rgb(243, 148, 60);
     overflow-x: auto; 
     overflow-y: auto;
 } 
 .tool-output{
-    background-color:blueviolet;
+    background-color:rgb(243, 148, 60);
     color: white;
     width:80%;
     height:15%;
@@ -334,7 +326,7 @@ thead th{
         width: 100%; 
         height: 55vh; 
         border-width: 2px; 
-        border-color: blueviolet;
+        border-color: rgb(243, 148, 60);
     }
     body{
         background-color: rgb(228, 116, 12); 
@@ -362,13 +354,13 @@ thead th{
         left:0;
         top:100%;
         overflow: auto;
-        /* background-color: blueviolet;  */
+        /* background-color: rgb(243, 148, 60);  */
     }
     .dropdown{ 
         width:33.33%;
         margin-inline: 2px;
         cursor:pointer; 
-        background-color: rgb(0, 0, 0);
+        background-color: rgb(228, 116, 12);
         position: relative; 
     }
     .dropdown-button{
@@ -405,6 +397,7 @@ thead th{
         overflow: auto;
         background-color: rgb(135, 135, 135);
         /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
+        z-index: 1;
     }
     .dropdown:hover .dropdown-content{
         display:block;
@@ -454,6 +447,12 @@ thead th{
         /* border:none; */ 
         opacity: 0.9;
     }    
+    .full-screen-button:hover{
+        /* opacity: 0.2; */
+        background-color: rgb(243, 148, 60);
+        border-bottom: 4px;
+        border-color: black; 
+    }
     .header-box{
         display: flex;
         width: 100%;
@@ -485,7 +484,7 @@ thead th{
         color: rgb(255, 255, 255);  
         border-radius:2vmin;
         border-width: 1px;
-        border-color: blueviolet;
+        border-color: rgb(243, 148, 60);
         width:80%;
         height:20vmin;
         justify-content:center;
@@ -505,7 +504,7 @@ thead th{
         font-family: calibri;
         font-size: 4vmin;  
         border-width: 2px; 
-        border-color: blueviolet; 
+        border-color: rgb(243, 148, 60); 
     }
     .input-label{
         font-weight: normal; 
@@ -528,7 +527,7 @@ thead th{
         font-size: 6vmin; 
         box-shadow: 1vmin; 
         box-shadow: 1px 1px 1px purple;
-        background-color: blueviolet; 
+        background-color: rgb(243, 148, 60); 
     }
     .input-text-box{
         width: 10vmin; 
@@ -555,12 +554,12 @@ thead th{
         margin:1px;
         border-radius:1vmin;
         border-width: 0px;
-        /* border-color: blueviolet; */
+        /* border-color: rgb(243, 148, 60); */
     }
     .table-container{
         border-radius: 2vmin; 
         border-width: 1px; 
-        border-color: blueviolet;
+        border-color: rgb(243, 148, 60);
         width: 100%; 
         height: 50vh;
         margin: 5px;
@@ -573,7 +572,7 @@ thead th{
         width: 150vmin; 
         height: 5vmin; 
         border-width:1px; 
-        border-color: blueviolet;
+        border-color: rgb(243, 148, 60);
     }
     .tool-container{
         width:100%; 
@@ -584,7 +583,7 @@ thead th{
         overflow-x: auto; 
     } 
     .tool-output{
-        background-color:blueviolet;
+        background-color:rgb(243, 148, 60);
         color: white;
         width:80%;
         height:15%;
