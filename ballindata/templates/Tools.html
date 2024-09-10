@@ -4,7 +4,7 @@
 <div class="center-item dropdown-container"> 
     <div class="dropdown" id="output-dropdown" style="width:100%">
         <button id="tool-button" class="table-button" style="width:100%;" onclick="showDropdown()"> All-Star Prediction Tool↓</button>  
-        <div id="output-content" class="dropdown-content">
+        <div id="output-content" class="click-dropdown-content">
             <button id="Tools-AS" onclick="loadTool('Tools-AS')" class="dropdown-button"> All-Star Prediction Tool </button>
         </div>
     </div>
@@ -30,7 +30,7 @@
   
   function handleClick(event) { 
       if (!event.target.matches('.table-button')) {
-          var dropdowns = document.getElementsByClassName("dropdown-content"); 
+          var dropdowns = document.getElementsByClassName("click-dropdown-content"); 
           for (var i = 0; i < dropdowns.length; i++) {
               var openDropdown = dropdowns[i];
               if (openDropdown.classList.contains('show')) {

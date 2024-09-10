@@ -4,7 +4,7 @@
     <div class="center-item dropdown-container"> 
         <div class="dropdown" id="output-dropdown" style="width:100%;">
             <button id="analysis-button" onclick="showDropdown()" class="table-button" style="width:100%"> What Makes an All-Star↓ </button>  
-            <div id="output-content" class="dropdown-content">
+            <div id="output-content" class="click-dropdown-content">
                 <button onclick="loadAnalysis('star')" id ="star" class="dropdown-button"> What Makes an All-Star </button> 
             </div>
         </div>
@@ -22,14 +22,14 @@
             if (container.classList.contains('full-screen')) {
                 container.classList.remove('full-screen');
                 document.getElementById("analysisFrame").className = "analysis-container";  
-                document.getElementById("full-screen").style = "none"; 
+                document.getElementById("full-screen").style = "margin-top:1vmin;"; 
                 document.getElementById("full-screen").innerHTML = "Fullscreen"; 
                 
             }
             else{
                 document.getElementById("analysisFrame").className = "full-screen";
                 document.getElementById("analysisFrame").style = "none";
-                document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px; z-index:3; width:100%;"; 
+                document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px; z-index:3; width:100%;margin-top:0px;"; 
                 document.getElementById("full-screen").innerHTML = "Exit Fullscreen"; 
             }
         }
@@ -47,7 +47,7 @@
         };
         function handleClick(event) { 
             if (!event.target.matches('.table-button')) {
-                var dropdowns = document.getElementsByClassName("dropdown-content"); 
+                var dropdowns = document.getElementsByClassName("click-dropdown-content"); 
                 for (var i = 0; i < dropdowns.length; i++) {
                     var openDropdown = dropdowns[i];
                     if (openDropdown.classList.contains('show')) {

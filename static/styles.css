@@ -3,16 +3,17 @@ a{
     margin-left: 2vmin;
 }
 .about-container{
-    width: 100%;
+    width: 60%;
     height: 60vh; 
     background-color: rgb(35, 35, 35); 
     color: white; 
     font-family: calibri; 
+    font-size: medium;
     margin-top: 4vmin;
 }
 .analysis-container{ 
     width: 100%; 
-    height: 50vmin; 
+    height: 60vmin; 
     border-width: 2px; 
     border-color: rgb(243, 148, 60);
 }
@@ -35,13 +36,14 @@ body{
 } 
 .click-dropdown-content{
     display: none;
-    position: absolute; 
+    /* position: absolute;  */ 
     min-width: 10vmin;
     max-height: 20vmin;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     background-color: rgb(243, 148, 60);
     width: 100%; 
+    z-index: 1;
 }
 .dropdown{ 
     width:33.33%;
@@ -80,6 +82,7 @@ body{
     top:100%;
     overflow: auto;
     background-color: rgb(243, 148, 60); 
+    z-index: 1;
     /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
 } 
 .dropdown-content.show{
@@ -140,7 +143,8 @@ body{
     color: rgb(0, 0, 0); 
     width: 100%; 
     border:none;
-    opacity: 0.9;
+    opacity: 0.9; 
+    margin-top: 1vmin; 
 }
 .full-screen-button:hover{
     /* opacity: 0.2; */
@@ -199,9 +203,16 @@ body{
 }
 .iframe-footer{
     display: flex; 
-    bottom: 1vmin; 
+    bottom: 0px; 
     width:100%;
-    background-color: rgb(35, 35, 35); 
+    background-color: rgb(0, 0, 0); 
+    position: fixed; 
+}
+.iframe-header{ 
+    display: flex; 
+    top: 0px; 
+    width:100%;
+    background-color: rgb(0, 0, 0); 
     position: fixed; 
 }
 .input-dropdown{
@@ -213,7 +224,8 @@ body{
 .input-label{
     font-weight: normal; 
     font-family: calibri; 
-    width: 15%; 
+    min-width: 2vmin; 
+    width: 8%; 
     color: rgb(255, 255, 255); 
     text-align: center;
 }
@@ -226,7 +238,7 @@ body{
 }
 .input-submit{
     font-family: calibri; 
-    color: white; 
+    color: black; 
     font-size: 4vmin; 
     box-shadow: 1vmin; 
     box-shadow: 1px 1px 1px purple;
@@ -240,6 +252,7 @@ body{
     max-width: 8vmin;
     border-width: 2px;
     border-color: rgb(243, 148, 60); 
+    background-color: rgb(228, 116, 12); 
 }
 .logo-container {
     width:12vmin; 
@@ -277,7 +290,7 @@ main{
     border-width: 1px; 
     border-color: rgb(243, 148, 60);
     width: 100%; 
-    height: 60vmin;
+    height: 63vmin;
     margin: 5px;
     background-color: rgb(0, 0, 0);
     /* overflow-x: scroll;  */
@@ -297,11 +310,13 @@ main{
     border-color: rgb(243, 148, 60);
     overflow-x: auto; 
     overflow-y: auto;
+    margin-top: 1vmin; 
 } 
 .tool-output{
     background-color:rgb(243, 148, 60);
-    color: white;
-    width:80%;
+    color: black; 
+    font-weight: bold;
+    width:50%;
     height:15%;
     font-family:calibri;
     size:1vmin;
@@ -324,7 +339,7 @@ thead th{
     }
     .analysis-container{ 
         width: 100%; 
-        height: 55vh; 
+        height: 50vh; 
         border-width: 2px; 
         border-color: rgb(243, 148, 60);
     }
@@ -347,13 +362,15 @@ thead th{
     } 
     .click-dropdown-content{
         display: none;
-        position: absolute;
+        position: default;
         min-width: 10vmin;
         max-height: 50vmin;
         width:100%;
         left:0;
         top:100%;
         overflow: auto;
+        z-index: 4; 
+
         /* background-color: rgb(243, 148, 60);  */
     }
     .dropdown{ 
@@ -444,7 +461,7 @@ thead th{
         border-color: black;
         color: rgb(0, 0, 0); 
         width: 100%; 
-        /* border:none; */ 
+        margin-top: 2vmin;
         opacity: 0.9;
     }    
     .full-screen-button:hover{
@@ -494,10 +511,19 @@ thead th{
         font-family:'calibri';
     }
     .iframe-footer{
+        position: fixed; 
         display: flex; 
-        bottom: 1vmin; 
+        bottom: 0px; 
         width:100%;
         /* background-color: rgb(0, 0, 0);  */
+        
+    } 
+    .iframe-header{ 
+        display: flex; 
+        top: 0px; 
+        width:100%;
+        background-color: rgb(0, 0, 0); 
+        color: black;
         position: fixed; 
     }
     .input-dropdown{
@@ -523,15 +549,15 @@ thead th{
     }
     .input-submit{
         font-family: calibri; 
-        color: white; 
+        color: black; 
         font-size: 6vmin; 
         box-shadow: 1vmin; 
-        box-shadow: 1px 1px 1px purple;
         background-color: rgb(243, 148, 60); 
     }
     .input-text-box{
         width: 10vmin; 
         border: none; 
+        background-color: rgb(243, 148, 60); 
     }
     .logo-container {
         width:50%; 
@@ -578,13 +604,13 @@ thead th{
         width:100%; 
         height: 50vh;  
         border:none; 
-        margin-top: 1vmin; 
+        margin-top: 2vmin; 
         overflow-y: auto; 
         overflow-x: auto; 
     } 
     .tool-output{
         background-color:rgb(243, 148, 60);
-        color: white;
+        color: black;
         width:80%;
         height:15%;
         font-family:calibri;

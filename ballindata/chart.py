@@ -14,7 +14,7 @@ master = pd.read_sql('master_plt', con=engine)
 app = DjangoDash('chart') 
 
 app.layout = html.Div(children=[
-    html.Div(children=[dcc.RadioItems(options=['PPG', 'APG', 'RPG', '3P%', 'FG%', 'FT%', 'SPG', 'BPG', 'ToPG', 'PF', 'GP', 'MPG', 'DRtg', 'ORtg', 'WS', 'DWS', 'OWS', 'FGA', '3PA', '2PA'], value='PPG', id='controls', inline=True)], style={'text-align':'center', 'font-family':'calibri'}),
+    html.Div(children=[dcc.RadioItems(options=['PPG', 'APG', 'RPG', '3P%', 'FG%', 'FT%', 'SPG', 'BPG', 'ToPG', 'PF', 'GP', 'MPG', 'DRtg', 'ORtg', 'WS', 'DWS', 'OWS', 'FGA', '3PA', '2PA', 'DBPM'], value='PPG', id='controls', inline=True)], style={'text-align':'center', 'font-family':'calibri'}),
     html.Div(children=[dcc.Dropdown(master.Player.unique(), value='LeBron James', id='dropdown-selection')], style={'font-family':'calibri'}), 
     html.Div( children=[dcc.Graph(figure={}, id='graph-content')]) 
 ], style={'background-color':'rgb(228, 138, 12)'}) 
@@ -37,7 +37,7 @@ def update_graph(stat, player_name, **kwargs):
         fillcolor='rgba(0, 0, 0, 0)',        
     ))
     fig.add_trace(go.Scatter(
-        x = lg_avg['Season'], 
+        x = player['Season'], 
         y = lg_avg[stat], 
         mode = 'lines+markers', 
         name = 'League Average',  
