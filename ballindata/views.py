@@ -63,11 +63,8 @@ def predict_as(request):
         selected_model = request.POST.get("model") 
         prediction = make_prediction(data, selected_model) 
         output = ''  
-        if selected_model == 'neural_network': 
-            output = f'All-Star Probability {prediction:.6f}' 
-        else: 
-            prediction ="True" if prediction==1.0 else "False"  
-            output = f'All-Star Prediction: {prediction}'
+        prediction ="True" if prediction==1.0 else "False"  
+        output = f'All-Star Prediction: {prediction}'
         return JsonResponse({'prediction': output}) 
     
     

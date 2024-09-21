@@ -1,5 +1,5 @@
 import pandas as pd, numpy as np, sklearn as sklm
-import tensorflow as tf, sqlalchemy 
+import sqlalchemy 
 from sklearn.linear_model import LogisticRegression, LinearRegression 
 import joblib 
 # from keras.models import load_model 
