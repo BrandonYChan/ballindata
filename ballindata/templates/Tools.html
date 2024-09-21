@@ -5,7 +5,8 @@
     <div class="dropdown" id="output-dropdown" style="width:100%">
         <button id="tool-button" class="table-button" style="width:100%;" onclick="showDropdown()"> All-Star Prediction Tool↓</button>  
         <div id="output-content" class="click-dropdown-content">
-            <button id="Tools-AS" onclick="loadTool('Tools-AS')" class="dropdown-button"> All-Star Prediction Tool </button>
+            <button id="Tools-AS" onclick="loadTool('Tools-AS')" class="dropdown-button"> All-Star Prediction Tool </button> 
+            <button id="comparison-chart" onclick="showPlot('comparison-chart')" class="dropdown-button"> Player Comparison Plot Generator </button>
         </div>
     </div>
 </div> 
@@ -16,6 +17,11 @@
 <script>
     function loadTool(title){ 
         document.getElementById('toolFrame').src = `/load_tool/${title}/`;  
+        button = document.getElementById('tool-button'); 
+        button.innerHTML = document.getElementById(title).innerHTML.concat("↓"); 
+    } 
+    function showPlot(title){
+        document.getElementById('toolFrame').src = "/django_plotly_dash/app/chart/"; 
         button = document.getElementById('tool-button'); 
         button.innerHTML = document.getElementById(title).innerHTML.concat("↓"); 
     } 

@@ -36,7 +36,7 @@ body{
 } 
 .click-dropdown-content{
     display: none;
-    /* position: absolute;   */
+    position: relative; 
     min-width: 10vmin;
     max-height: 20vmin;
     overflow: auto;
@@ -293,7 +293,7 @@ main{
     border-width: 1px; 
     border-color: rgb(243, 148, 60);
     width: 100%; 
-    height: 63vmin;
+    height: 63vh;
     margin: 5px;
     background-color: rgb(0, 0, 0);
     /* overflow-x: scroll;  */
@@ -308,7 +308,7 @@ main{
 }
 .tool-container{
     width:100%; 
-    height: 60vmin; 
+    height: 60vh; 
     border-width:1px; 
     border-color: rgb(243, 148, 60);
     overflow-x: auto; 
@@ -339,6 +339,15 @@ thead th{
     a{
         color: white; 
         margin: 2vmin;
+    }
+    .about-container{
+        width: 100%;
+        height: 60vh; 
+        background-color: rgb(35, 35, 35); 
+        color: white; 
+        font-family: calibri; 
+        font-size: medium;
+        margin-top: 4vmin;
     }
     .analysis-container{ 
         width: 100%; 
@@ -433,6 +442,7 @@ thead th{
         left: 0; 
         bottom: 0;
         width:100%;
+        height: 3vh;
         background-color: rgb(35, 35, 35); 
         color: rgb(255, 255, 255); 
         font-size: 4vmin; 
@@ -507,7 +517,7 @@ thead th{
         width:80%;
         height:20vmin;
         justify-content:center;
-        margin:2vmin;
+        margin:3vmin;
         cursor:pointer;
         font-size:8vmin;
         font-family:'calibri';
