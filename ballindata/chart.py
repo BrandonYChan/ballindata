@@ -8,8 +8,10 @@ import sqlite3, sqlalchemy
 import logging, os, sys 
 from django.conf import settings 
 
-engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
-master = pd.read_sql('master_plt', con=engine) 
+# engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
+# master = pd.read_sql('master_plt', con=engine) 
+master = pd.read_csv('ballindata/master_plt.csv') 
+master['Season'] = master['Season'].astype('int64') 
 
 app = DjangoDash('chart') 
 
@@ -38,7 +40,7 @@ def update_graph(stat, p1, p2, **kwargs):
                .sort_values() 
     )
     lg_avg = master.groupby('Season')[stat].mean().reset_index() 
-    lg_avg = lg_avg[(lg_avg['Season']>=seasons.iloc[0].astype(str)) & (lg_avg['Season']<=seasons.iloc[len(seasons)-1].astype(str))] 
+    lg_avg = lg_avg[(lg_avg['Season']>=seasons.iloc[0]) & (lg_avg['Season']<=seasons.iloc[len(seasons)-1])] 
     fig = go.Figure() 
     fig.add_trace(go.Scatter(
         x = seasons, 
