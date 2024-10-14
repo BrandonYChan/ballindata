@@ -68,6 +68,3 @@ def predict_as(request):
         prediction ="True" if prediction==1.0 else "False"  
         output = f'All-Star Prediction: {prediction}'
         return JsonResponse({'prediction': output}) 
-    
-engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
-master = pd.read_sql('master_plt', con=engine) 
