@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render 
 from django.http import HttpResponse  
 from django.http import JsonResponse 
 from . import chart 
@@ -6,6 +6,8 @@ from .predict_as import get_stat_names
 from .predict_as import make_prediction 
 from .predict_as import get_avg  
 import numpy as np 
+import sqlalchemy, sys, os, pandas as pd   
+from django.conf import settings 
 # import make_prediction 
 # import get_stat_names 
 
@@ -67,4 +69,5 @@ def predict_as(request):
         output = f'All-Star Prediction: {prediction}'
         return JsonResponse({'prediction': output}) 
     
-    
+engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
+master = pd.read_sql('master_plt', con=engine) 

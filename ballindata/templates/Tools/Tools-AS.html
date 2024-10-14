@@ -6,14 +6,17 @@
         <meta name="viewport" content="width=device-width initial-scale=1.0">  
     </head> 
     <link rel="stylesheet" href="{% static 'styles.css' %}">  
-    <link rel="icon" href="{% static 'Images/BerryBall.png' %}"> 
+    {% comment %} <link rel="icon" href="{% static 'Images/BerryBall.png' %}">  {% endcomment %}
     <title> Ball in Data </title> 
 
     <body style="background-color:rgb(35, 35, 35);"> 
-        <div class="center-item iframe-header">
+        <div class="center-item iframe-header"> 
             <div id="prediction-result" class="tool-output"> Prediction Result </div> 
         </div> 
-        <br> 
+        <br><br> 
+        <div class="center-item"> 
+        </div> 
+        {% comment %} <br>  {% endcomment %}
         <main> 
             <form id="prediction-form" method="POST", action="{%url 'predict_allstar'%}">
                 {% csrf_token %}

@@ -8,15 +8,13 @@ import sqlite3, sqlalchemy
 import logging, os, sys 
 from django.conf import settings 
 
-# engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
-# master = pd.read_sql('master_plt', con=engine) 
-master = pd.read_csv('ballindata/master_plt.csv') 
-master['Season'] = master['Season'].astype('int64') 
+engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
+master = pd.read_sql('master_plt', con=engine) 
 
 app = DjangoDash('chart') 
 
 app.layout = html.Div(children=[
-    html.Div(children=[dcc.RadioItems(options=['PPG', 'APG', 'RPG', '3P%', 'FG%', 'FT%', 'SPG', 'BPG', 'ToPG', 'PF', 'GP', 'MPG', 'DRtg', 'ORtg', 'WS', 'DWS', 'OWS', 'FGA', '3PA', '2PA', 'DBPM'], value='PPG', id='controls', inline=True)], style={'text-align':'center', 'font-family':'calibri'}),
+    html.Div(children=[dcc.RadioItems(options=['PPG', 'APG', 'RPG', '3P%', 'FG%', 'FT%', 'USG%', 'SPG', 'BPG', 'ToPG', 'PF', 'GP', 'MPG', 'DRtg', 'ORtg', 'WS', 'DWS', 'OWS', 'FG', 'FGA', '3P', '3PA', '2P', '2PA', 'BPM', 'OBPM', 'DBPM', 'VORP'], value='PPG', id='controls', inline=True)], style={'text-align':'center', 'font-family':'calibri'}),
     html.Div(children=[dcc.Dropdown(master.Player.unique(), value='LeBron James', id='dropdown-selection')], style={'font-family':'calibri'}), 
     html.Div(children=[dcc.Dropdown(master.Player.unique(), value='Kobe Bryant', id='dropdown-selection-2')], style={'font-family':'calibri'}), 
     html.Div( children=[dcc.Graph(figure={}, id='graph-content')]) 
@@ -40,7 +38,7 @@ def update_graph(stat, p1, p2, **kwargs):
                .sort_values() 
     )
     lg_avg = master.groupby('Season')[stat].mean().reset_index() 
-    lg_avg = lg_avg[(lg_avg['Season']>=seasons.iloc[0]) & (lg_avg['Season']<=seasons.iloc[len(seasons)-1])] 
+    lg_avg = lg_avg[(lg_avg['Season']>=seasons.iloc[0].astype(str)) & (lg_avg['Season']<=seasons.iloc[len(seasons)-1].astype(str))] 
     fig = go.Figure() 
     fig.add_trace(go.Scatter(
         x = seasons, 

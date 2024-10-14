@@ -20,10 +20,11 @@ a{
 body{
     background-color: rgb(228, 116, 12); 
 }
-.button-container{
+.button-container{ 
     display: flex; 
     flex-direction: column;
     align-items: center;
+    /* justify-content: center;  */
     width:70vmin;
     height:70vmin;
     border-radius: 20px; 
@@ -191,7 +192,7 @@ body{
     color: rgb(255, 255, 255);  
     border-radius:5px;
     border-width: 1px;
-    border-color: rgb(243, 148, 60);
+    border-color: rgb(243, 148, 60); 
     width:50vmin;
     height:15vmin;
     justify-content:center;
@@ -271,6 +272,12 @@ main{
     margin-bottom: 2vmin;
     padding: 1vmin; 
 
+} 
+.mini-icon{
+    width:10vmin; 
+    /* height:auto;  */
+    margin:1px;
+    cursor:pointer;
 }
 .table-button{
     background-color: rgb(35, 35, 35);
@@ -359,16 +366,16 @@ thead th{
         background-color: rgb(228, 116, 12); 
     }
     .button-container{
-        display: flex; 
-        flex-direction: column;
-        align-items: center;
+        /* display: flex;  */
+        /* flex-direction: column; */
+        align-items: center; 
         width:100%;
         height:40%;
         border-radius: 20px; 
         margin: 3px;
     }
     .center-item{
-        display: flex;
+        display: flex; 
         text-align: center;
         justify-content: center;
     } 
@@ -509,6 +516,9 @@ thead th{
         margin-bottom: 0px; 
     }
     .home-button{
+        display: flex; 
+        align-items: center; 
+
         background-color:rgb(35, 35, 35);
         color: rgb(255, 255, 255);  
         border-radius:2vmin;
@@ -516,7 +526,7 @@ thead th{
         border-color: rgb(243, 148, 60);
         width:80%;
         height:20vmin;
-        justify-content:center;
+        /* justify-content:center; */
         margin:3vmin;
         cursor:pointer;
         font-size:8vmin;
@@ -582,6 +592,12 @@ thead th{
         padding: 1vmin; 
     
     }
+    .mini-icon{
+        width:10vmin; 
+        /* height:auto;  */
+        margin:1px;
+        cursor:pointer;
+    } 
     .table-button{
         background-color: rgb(35, 35, 35);
         color: rgb(255, 255, 255); 

@@ -3,14 +3,17 @@
 {% block content %}
     <div class="center-item">
         <div class="button-container">
-            <button onclick = "window.location.href = '{% url 'Stats' %}'" class = "home-button">    
-                <b>Stats</b>
+            <button onclick = "window.location.href = '{% url 'Stats' %}'" class = "home-button" style="display:flex; align-items:center;">    
+                <b>Stats</b> 
+                <img src="../../static/Images/stats.png" style="height:40%; width:auto; margin-left:15px;"> 
             </button>    
-            <button onclick = "window.location.href = '{% url 'Analysis' %}'" class = "home-button"> 
-                <b>Analysis</b>
+            <button onclick = "window.location.href = '{% url 'Analysis' %}'" class = "home-button" style="display:flex; align-items:center;"> 
+                <b>Analysis</b> 
+                <img src="../../static/Images/analysis.png" style="height:40%; width:auto; margin-left:15px;"> 
             </button>
-            <button onclick = "window.location.href = '{% url 'Tools' %}'" class = "home-button">
+            <button onclick = "window.location.href = '{% url 'Tools' %}'" class = "home-button" style="display:flex; align-items:center;"> 
                 <b>Tools</b> 
+                <img src="../../static/Images/tools.png" style="height:40%; width:auto; margin-left: 15px;"> 
             </button>
         </div>
     </div>
