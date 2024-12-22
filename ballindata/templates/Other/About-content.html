@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html> 
+<html lang="en"> 
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width initial-scale=1.0"> 
+        <link rel="stylesheet" href="{% static 'styles.css' %}"> 
+
+        <style>
+            body{
+                font-family:calibri; 
+                color:white;
+                background-color: rgb(35, 35, 35); 
+            }
+        </style>
+    </head> 
+
+
+    <body style="">
+        <h2> Stats Page </h2> 
+        <img src="{% static 'Images/stats.png' %}" class="mini-icon"> 
+        <p>
+            - Customize tables and plots of NBA player data 
+            <br> 
+            - Data organized by season and stat type 
+        </p>
+        <h2> Analysis Page </h2> 
+        <img src="{% static 'Images/analysis.png' %}" class="mini-icon">
+        <p>
+            - Analyzing machine learning applications on NBA data 
+            <br> 
+            - Comprehensive explanation and visualization 
+        </p> 
+        <h2> Tools Page </h2> 
+        <img src="{% static 'Images/tools.png' %}" class="mini-icon">
+        <p>
+            - Feed input to machine learning models and receive predictions 
+            <br> 
+            - Stats left empty or with extraneous input default to the mean 
+            <br> 
+            - Models perform poorly with inputs left blank due to relationships between variables 
+        </p> 
+        <h2> The Creator </h2> 
+        <img src="{% static 'Images/BerryBall.png' %}" class="mini-icon">
+        <p>
+            - Undergrad student studying data science 
+            <br> 
+            - Toronto Raptors fan 
+            <br> 
+            - Interest in applying machine learning to sports analysis  
+        </p> 
+        
+    </body>
+
+
+
+
+
+</html> 

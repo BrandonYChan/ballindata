@@ -1,14 +1,14 @@
 from django import forms 
-# from .models import SeasonSelectModel
+from .models import DropdownModel 
 
-# class SeasonSelectForm(forms.ModelForm):
+class DropDownModelForm(forms.Form):
+    options = forms.ModelChoiceField(
+        queryset=DropdownModel.objects.all(),
+        empty_label="Sample Player",
+        to_field_name="name",
+        label="Dropdown Options",
+    )
     
-#     class Meta:
-#         model = SeasonSelectModel
-
-OPTIONS = (
-    ('option1', 'Option 1'), 
-    ('option2', 'Option 2'), 
-    ('option3', 'Option 3'), 
-)
-dropdown = forms.ChoiceField(choices=OPTIONS, required=True, label='Select and Option')
+    
+    
+    

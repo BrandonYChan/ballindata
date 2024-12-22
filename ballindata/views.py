@@ -10,31 +10,42 @@ import sqlalchemy, sys, os, pandas as pd
 from django.conf import settings 
 # import make_prediction 
 # import get_stat_names 
+# import tensorflow as tf 
+from .forms import DropDownModelForm 
 
 # Create your views here.
+base_dir = "Main/"
 def home(request): 
-    return render(request, 'Home.html')
+    template_name=base_dir + 'Home.html'
+    return render(request, template_name)
 
 def stats(request):
-    return render(request, 'Stats.html')
+    template_name=base_dir + 'Stats.html' 
+    return render(request, template_name)
 
 def analysis(request):
-    return render(request, 'Analysis.html')
+    template_name=base_dir + 'Analysis.html'
+    return render(request, template_name)
 
 def tools(request): 
-    return render(request, 'Tools.html') 
+    template_name=base_dir + 'Tools.html'
+    return render(request, template_name) 
 
 def about(request): 
-    return render(request, 'About.html')  
+    template_name=base_dir + 'About.html'
+    return render(request, template_name)  
 
 def about_content(request):
-    return render(request, 'About-content.html')
+    template_name=base_dir + 'About-content.html'
+    return render(request, template_name)
 
 def stat_manual(request): 
-    return render(request, 'StatManual.html')  
+    template_name=base_dir + 'StatManual.html'
+    return render(request, template_name)  
 
 def stat_manual_content(request):
-    return render(request, 'StatManual-content.html')
+    template_name=base_dir + 'StatManual-content.html'
+    return render(request, template_name)
     
 def load_table(request, page_name):
     template_name = f"Tables/{page_name}.html" 
@@ -48,23 +59,25 @@ def load_tool(request, page_name):
     template_name = f"Tools/{page_name}.html" 
     return render(request, template_name)
 
-def chart(request):
-    return render(request, 'Chart.html')
-
 def predict_as(request): 
     if request.method == "POST":
-        stat_names = get_stat_names() 
+        selected_model = request.POST.get("model") 
+        simple_models = ['neural_network_simple', 'logistic_regression_simple', 'random_forest_simple'] 
+        stat_names = ['PPG', 'RPG', 'APG', 'SPG', 'BPG'] if selected_model in simple_models else get_stat_names() 
         stat_vars = np.arange(len(stat_names)) 
         for i in range(len(stat_names)):
             value = request.POST.get(stat_names[i]) 
             try:
-                stat_vars[i] = float(value)
+                stat_vars[i] = float(value) 
             except (TypeError, ValueError):
                 stat_vars[i] = get_avg(stat_names[i])
         data = [stat_vars] 
-        selected_model = request.POST.get("model") 
-        prediction = make_prediction(data, selected_model) 
+        prediction = make_prediction(data, selected_model) * 100 
         output = ''  
-        prediction ="True" if prediction==1.0 else "False"  
-        output = f'All-Star Prediction: {prediction}'
+        output = f'All-Star Prediction: {prediction}%'
         return JsonResponse({'prediction': output}) 
+
+def dropdown_form(request): 
+    form = DropDownModelForm() 
+    return render(request, )
+

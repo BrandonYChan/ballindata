@@ -22,8 +22,8 @@ urlpatterns = [
     path('load_table/<str:page_name>/', load_table, name='load_table'),
     path('load_analysis/<str:page_name>/', load_analysis, name='load_analysis'), 
     path('load_tool/<str:page_name>/', load_tool, name='load_tool'),  
-    path('chart/', views.chart, name='chart'), 
     path('predict_allstar/', views.predict_as, name='predict_allstar'),
+    path('django_plotly_dash/', include('django_plotly_dash.urls')), 
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 
 

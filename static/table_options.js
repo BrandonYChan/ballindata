@@ -45,6 +45,7 @@ table = $('table').DataTable({
     scrollX: true, 
     scrollY:'80vmin', 
     info:false,
+    order:[[4, 'desc']] 
 })
 
 $('table').on( 'draw.dt', function () {

@@ -8,9 +8,10 @@ import sqlite3, sqlalchemy
 import logging, os, sys 
 from django.conf import settings 
 
-# engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
-path = f"{os.path.join(settings.BASE_DIR, 'static/CSV/master_plt.csv')}"
-master = pd.read_csv('static/CSV/master_plt.csv') 
+engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
+# path = f"{os.path.join(settings.BASE_DIR, 'static/CSV/master_plt.csv')}"
+# master = pd.read_csv(path) 
+master = pd.read_sql('master_plt', con=engine) 
 
 app = DjangoDash('chart') 
 
@@ -62,12 +63,12 @@ def update_graph(stat, p1, p2, **kwargs):
         name = p2, 
         line = dict(color='purple'),  
         fillcolor='rgba(0, 0, 0, 0)',        
-    ))
+    )) 
     
     
     fig.update_layout(template = 'plotly_dark')
     fig.update_layout(showlegend=True) 
     return fig 
 
-if __name__ == '__main__':
-    app.run_server(debug=True) 
+# if __name__ == '__main__':
+#     app.run_server(debug=True) 

@@ -22,7 +22,7 @@
                 {% csrf_token %}
                 <div class="input-row">
                     <label for="Age" class="input-label"> Age: </label><br>
-                        <input type="text" id=Age name=Age class="input-text-box" value=""><br>
+                        <input type="text" id="Age" name="Age" class="input-text-box" value=""><br>
                         <label for="GP" class="input-label"> GP: </label><br>
                         <input type="text" id=GP name=GP class="input-text-box" value=""><br>
                         <label for="MPG" class="input-label"> MPG: </label><br>
@@ -211,7 +211,7 @@
                         <div style="width:2vmin;"></div> 
                     <select name="model" id="model">
                         <option value="logistic_regression">Logistic Regression</option>
-                        {% comment %} <option value="neural_network">Neural Network</option> {% endcomment %}
+                        <option value="neural_network">Neural Network</option>
                         <option value="random_forest">Random Forest</option> 
                     </select>
                     <input type="submit" value="Submit" class="input-submit"> 
@@ -222,19 +222,13 @@
 </html> 
 <script>
     document.getElementById('prediction-form').onsubmit = async function(event) {
-        event.preventDefault(); // Prevent the default form submission
-
+        event.preventDefault(); 
         const formData = new FormData(this);
-
-        // Send the form data to the Django view
         const response = await fetch("{% url 'predict_allstar' %}", {
             method: 'POST',
             body: formData
         });
-
-        const result = await response.json(); // Parse the JSON response
-
-        // Update the prediction result on the page
+        const result = await response.json(); 
         document.getElementById('prediction-result').textContent = result.prediction;
     };
 </script>

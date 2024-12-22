@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
+    # 'dpd_static_support',  
     # 'rest_framework', 
     # 'ballindata',
     # 'chart',    
@@ -101,8 +102,13 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3', 
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ballbase',
+        'USER': 'postgres',
+        'PASSWORD': 'access',
+        'HOST': 'localhost',
+        'POST': '5432',  
     }
 }
 

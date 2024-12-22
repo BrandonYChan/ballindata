@@ -1,0 +1,174 @@
+{% extends "Base.html" %}
+
+
+{% block content %} 
+    <div class="center-item">
+        <div class="dropdown-container"> 
+            <div class="dropdown" id="output-dropdown">
+                <button id="output-button" class="table-button" style="width:100%"> Table↓</button> 
+                <div id="output-content" class="dropdown-content">
+                    <button onclick="showTable()" class="dropdown-button"> Table </button>
+                    <button onclick="showPlot()" class="dropdown-button"> Plot </button> 
+                </div> 
+            </div> 
+
+            <div class="dropdown" id="season-dropdown"> 
+                <button id="season-button" class="table-button" style="width:100%;">2024-25↓</button>
+                <div id="season-content" class="dropdown-content"> 
+                    <button onclick="seasonSelect('2024_25')" class="dropdown-button"> 2024-25 </button>
+                    <button onclick="seasonSelect('2023_24')" class="dropdown-button"> 2023-24 </button>
+                    <button onclick="seasonSelect('2022_23')" class="dropdown-button"> 2022-23 </button>
+                    <button onclick="seasonSelect('2021_22')" class="dropdown-button"> 2021-22 </button>
+                    <button onclick="seasonSelect('2020_21')" class="dropdown-button"> 2020-21 </button>
+                    <button onclick="seasonSelect('2019_20')" class="dropdown-button"> 2019-20 </button>
+                    <button onclick="seasonSelect('2018_19')" class="dropdown-button"> 2018-19 </button>
+                    <button onclick="seasonSelect('2017_18')" class="dropdown-button"> 2017-18 </button>
+                    <button onclick="seasonSelect('2016_17')" class="dropdown-button"> 2016-17 </button>
+                    <button onclick="seasonSelect('2015_16')" class="dropdown-button"> 2015-16 </button>
+                    <button onclick="seasonSelect('2014_15')" class="dropdown-button"> 2014-15 </button>
+                    <button onclick="seasonSelect('2013_14')" class="dropdown-button"> 2013-14 </button>
+                    <button onclick="seasonSelect('2012_13')" class="dropdown-button"> 2012-13 </button>
+                    <button onclick="seasonSelect('2011_12')" class="dropdown-button"> 2011-12 </button>
+                    <button onclick="seasonSelect('2010_11')" class="dropdown-button"> 2010-11 </button>
+                    <button onclick="seasonSelect('2009_10')" class="dropdown-button"> 2009-10 </button>
+                    <button onclick="seasonSelect('2008_09')" class="dropdown-button"> 2008-09 </button>
+                    <button onclick="seasonSelect('2007_08')" class="dropdown-button"> 2007-08 </button>
+                    <button onclick="seasonSelect('2006_07')" class="dropdown-button"> 2006-07 </button>
+                    <button onclick="seasonSelect('2005_06')" class="dropdown-button"> 2005-06 </button>
+                    <button onclick="seasonSelect('2004_05')" class="dropdown-button"> 2004-05 </button>
+                    <button onclick="seasonSelect('2003_04')" class="dropdown-button"> 2003-04 </button>
+                    <button onclick="seasonSelect('2002_03')" class="dropdown-button"> 2002-03 </button>
+                    <button onclick="seasonSelect('2001_02')" class="dropdown-button"> 2001-02 </button>
+                    <button onclick="seasonSelect('2000_01')" class="dropdown-button"> 2000-01 </button>
+                    <button onclick="seasonSelect('1999_00')" class="dropdown-button"> 1999-00 </button>
+                    <button onclick="seasonSelect('1998_99')" class="dropdown-button"> 1998-99 </button>
+                    <button onclick="seasonSelect('1997_98')" class="dropdown-button"> 1997-98 </button>
+                    <button onclick="seasonSelect('1996_97')" class="dropdown-button"> 1996-97 </button>
+                    <button onclick="seasonSelect('1995_96')" class="dropdown-button"> 1995-96 </button>
+                    <button onclick="seasonSelect('1994_95')" class="dropdown-button"> 1994-95 </button>
+                    <button onclick="seasonSelect('1993_94')" class="dropdown-button"> 1993-94 </button>
+                    <button onclick="seasonSelect('1992_93')" class="dropdown-button"> 1992-93 </button>
+                    <button onclick="seasonSelect('1991_92')" class="dropdown-button"> 1991-92 </button>
+                    <button onclick="seasonSelect('1990_91')" class="dropdown-button"> 1990-91 </button>
+                    <button onclick="seasonSelect('1989_90')" class="dropdown-button"> 1989-90 </button>
+                    <button onclick="seasonSelect('1988_89')" class="dropdown-button"> 1988-89 </button>
+                    <button onclick="seasonSelect('1987_88')" class="dropdown-button"> 1987-88 </button>
+                    <button onclick="seasonSelect('1986_87')" class="dropdown-button"> 1986-87 </button>
+                    <button onclick="seasonSelect('1985_86')" class="dropdown-button"> 1985-86 </button>
+                    <button onclick="seasonSelect('1984_85')" class="dropdown-button"> 1984-85 </button>
+                    <button onclick="seasonSelect('1983_84')" class="dropdown-button"> 1983-84 </button>
+                    <button onclick="seasonSelect('1982_83')" class="dropdown-button"> 1982-83 </button>
+                    <button onclick="seasonSelect('1981_82')" class="dropdown-button"> 1981-82 </button>
+                    <button onclick="seasonSelect('1980_81')" class="dropdown-button"> 1980-81 </button>
+                    <button onclick="seasonSelect('1979_80')" class="dropdown-button"> 1979-80 </button>
+                    <button onclick="seasonSelect('1978_79')" class="dropdown-button"> 1978-79 </button>
+                    <button onclick="seasonSelect('1977_78')" class="dropdown-button"> 1977-78 </button>
+                    <button onclick="seasonSelect('1976_77')" class="dropdown-button"> 1976-77 </button>
+                    <button onclick="seasonSelect('1975_76')" class="dropdown-button"> 1975-76 </button>
+                    <button onclick="seasonSelect('1974_75')" class="dropdown-button"> 1974-75 </button>
+                    <button onclick="seasonSelect('1973_74')" class="dropdown-button"> 1973-74 </button>
+                    <button onclick="seasonSelect('1972_73')" class="dropdown-button"> 1972-73 </button>
+                    <button onclick="seasonSelect('1971_72')" class="dropdown-button"> 1971-72 </button>
+                    <button onclick="seasonSelect('1970_71')" class="dropdown-button"> 1970-71 </button>
+                    <button onclick="seasonSelect('1969_70')" class="dropdown-button"> 1969-70 </button>
+                    <button onclick="seasonSelect('1968_69')" class="dropdown-button"> 1968-69 </button>
+                    <button onclick="seasonSelect('1967_68')" class="dropdown-button"> 1967-68 </button>
+                    <button onclick="seasonSelect('1966_67')" class="dropdown-button"> 1966-67 </button>
+                    <button onclick="seasonSelect('1965_66')" class="dropdown-button"> 1965-66 </button>
+                    <button onclick="seasonSelect('1964_65')" class="dropdown-button"> 1964-65 </button>
+                    <button onclick="seasonSelect('1963_64')" class="dropdown-button"> 1963-64 </button>
+                    <button onclick="seasonSelect('1962_63')" class="dropdown-button"> 1962-63 </button>
+                    <button onclick="seasonSelect('1961_62')" class="dropdown-button"> 1961-62 </button>
+                    <button onclick="seasonSelect('1960_61')" class="dropdown-button"> 1960-61 </button>
+                    <button onclick="seasonSelect('1959_60')" class="dropdown-button"> 1959-60 </button>
+                    <button onclick="seasonSelect('1958_59')" class="dropdown-button"> 1958-59 </button>
+                    <button onclick="seasonSelect('1957_58')" class="dropdown-button"> 1957-58 </button>
+                    <button onclick="seasonSelect('1956_57')" class="dropdown-button"> 1956-57 </button>
+                    <button onclick="seasonSelect('1955_56')" class="dropdown-button"> 1955-56 </button>
+                    <button onclick="seasonSelect('1954_55')" class="dropdown-button"> 1954-55 </button>
+                    <button onclick="seasonSelect('1953_54')" class="dropdown-button"> 1953-54 </button>
+                    <button onclick="seasonSelect('1952_53')" class="dropdown-button"> 1952-53 </button>
+                    <button onclick="seasonSelect('1951_52')" class="dropdown-button"> 1951-52 </button>
+                    <button onclick="seasonSelect('1950_51')" class="dropdown-button"> 1950-51 </button>
+                    <button onclick="seasonSelect('1949_50')" class="dropdown-button"> 1949-50 </button>
+                    
+                </div>  
+            </div>  
+
+            <div class="dropdown" id="type-dropdown">
+                <button id="type-button" class="table-button" style="width:100%;">Averages↓</button>
+                <div id="type-content" class="dropdown-content"> 
+                    <button onclick="loadTable('Averages_')" class="dropdown-button"> Averages </button>
+                    <button onclick="loadTable('Totals_')" class="dropdown-button"> Totals </button> 
+                    <button onclick="loadTable('Advanced_')" class="dropdown-button"> Advanced </button> 
+                </div>  
+            </div>  
+        </div> 
+    </div> 
+    
+    <div class = "center-item"> 
+        <iframe id = "contentFrame" src="{% url 'load_table' 'Averages_2024_25' %}" class="table-container">
+        </iframe>   
+    </div> 
+
+    <script>
+        let season="2024_25";
+        let stat_type="Averages_"; 
+        function loadTable(stat){ 
+            stat_type = stat; 
+            document.getElementById('contentFrame').src = `/load_table/${stat_type.concat(season)}/`; 
+            button = document.getElementById('type-button'); 
+            button.innerHTML = stat_type.replace("_", "").concat("↓"); 
+            document.getElementById("output-button").innerHTML="Table↓"; 
+        } 
+        function showDropdown(dropdown_name){
+            document.getElementById(dropdown_name).classList.toggle("show"); 
+        }
+        function seasonSelect(season_selected){
+            season = season_selected; 
+            loadTable(stat_type); 
+            button = document.getElementById('season-button');  
+            button.innerHTML = season.replace("_", "-").concat("↓"); 
+        }
+        function showPlot(){
+            document.getElementById('contentFrame').src = "/django_plotly_dash/app/chart/"; 
+            document.getElementById("output-button").innerHTML="Plot↓"; 
+            document.getElementById("season-dropdown").style.display="none"; 
+            document.getElementById("type-dropdown").style.display="none";
+            document.getElementById("output-dropdown").style.width="100%";
+        }
+        function showTable(){
+            document.getElementById("season-dropdown").style.display="block"; 
+            document.getElementById("type-dropdown").style.display="block";
+            document.getElementById("output-dropdown").style.width="33%"; 
+            loadTable(stat_type); 
+        }
+
+        {% comment %} function showOutputDropdown() { 
+            document.getElementById("output-content").classList.toggle("show"); 
+        }
+        function showSeasonDropdown() { 
+            document.getElementById("season-content").classList.toggle("show"); 
+        }
+        function showTypeDropdown() { 
+            document.getElementById("type-content").classList.toggle("show"); 
+        } {% endcomment %}
+    
+        window.onclick = function(event) {
+          handleClick(event);
+        };
+      
+        function handleClick(event) { 
+            if (!event.target.matches('.table-button')) {
+                var dropdowns = document.getElementsByClassName("dropdown-content"); 
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }  
+    </script> 
+{% endblock %}
+
