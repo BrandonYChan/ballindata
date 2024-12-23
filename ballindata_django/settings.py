@@ -105,7 +105,7 @@ DATABASES = {
         # 'ENGINE': 'django.db.backends.sqlite3', 
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ballbase',
-        'USER': 'postgres',
+        'USER': 'brandon',
         'PASSWORD': 'access',
         'HOST': 'localhost',
         'POST': '5432',  

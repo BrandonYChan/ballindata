@@ -3,7 +3,7 @@ import sqlalchemy
 from sklearn.linear_model import LogisticRegression, LinearRegression 
 import joblib 
 # import tensorflow as tf
-from keras.models import load_model 
+# from keras.models import load_model 
 import os 
 from django.conf import settings 
 
@@ -23,9 +23,9 @@ def make_prediction(data, selected_model):
     # elif selected_model == 'neural_network':
     #     nn = load_model(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/seq_model.keras'))  
     #     prediction = nn.predict(tf.convert_to_tensor(data))[0][0].astype('float64') 
-    elif selected_model == 'neural_network_simple':
-        nn_simple = load_model(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/as_nn_tool.keras')) 
-        prediction = round(nn_simple.predict(tf.convert_to_tensor(data))[0][0].astype('float64'), 4)  
+    # elif selected_model == 'neural_network_simple':
+    #     nn_simple = load_model(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/as_nn_tool.keras')) 
+        # prediction = round(nn_simple.predict(tf.convert_to_tensor(data))[0][0].astype('float64'), 4)  
     elif selected_model == 'logistic_regression_simple': 
         model = joblib.load(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/as_lr_tool.pkl'))
         prediction = round(model.predict_proba(data)[0][1], 4) 
