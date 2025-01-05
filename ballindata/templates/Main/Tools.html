@@ -5,14 +5,15 @@
     <div class="dropdown" id="output-dropdown" style="width:100%">
         <button id="tool-button" class="table-button" style="width:100%;" onclick="showDropdown()"> All-Star Prediction Tool↓</button>  
         <div id="output-content" class="click-dropdown-content">
-            <button id="Tools-AS-Simple" onclick="loadTool('Tools-AS-Simple')" class="dropdown-button"> All-Star Prediction Tool</button> 
-            {% comment %} <button id="Tools-AS" onclick="loadTool('Tools-AS')" class="dropdown-button"> All-Star Prediction Tool (Complex) </button>  {% endcomment %}
+            <button id="allstar-tool" onclick="loadTool('allstar-tool')" class="dropdown-button"> All-Star Prediction Tool</button> 
             <button id="comparison-chart" onclick="showPlot()" class="dropdown-button"> Player Comparison Plot Generator </button>
         </div>
     </div>
 </div> 
+
+<img id="full-screen" onclick="fullScreen()" src="../../../static/Images/full-screen.png" class="full-screen-button"> 
 <div class="center-item"> 
-    <iframe id="toolFrame" class="tool-container" src="{% url 'load_tool' 'Tools-AS-Simple' %}"></iframe>  
+    <iframe id="toolFrame" class="frame" src="{% url 'load_tool' 'allstar-tool' %}"></iframe>  
 </div> 
 
 <script>
@@ -52,6 +53,22 @@
         console.log("iframe clicked");
         handleClick(event);
     });
+
+    function fullScreen(){ 
+        container = document.getElementById('toolFrame'); 
+        if (container.classList.contains('full-screen')) {
+            //container.classList.remove('full-screen');
+            document.getElementById("toolFrame").className = "frame";   
+            document.getElementById("full-screen").style = "width:6vmin;height:6vmin;position:absolute;right:32px;"; 
+            document.getElementById("full-screen").innerHTML = "Fullscreen"; 
+            
+        }
+        else{
+            document.getElementById("toolFrame").className = "full-screen";
+            document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px;right:16px;z-index:3;margin-top:0px;width:6vmin;height:6vmin;"; 
+            document.getElementById("full-screen").innerHTML = "Exit Fullscreen"; 
+        }
+    }
 
 </script> 
 

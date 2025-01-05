@@ -2,9 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse  
 from django.http import JsonResponse 
 from . import chart 
-from .predict_as import get_stat_names 
+# from .predict_as import get_stat_names 
 from .predict_as import make_prediction 
-from .predict_as import get_avg  
 import numpy as np 
 import sqlalchemy, sys, os, pandas as pd   
 from django.conf import settings 
@@ -12,6 +11,7 @@ from django.conf import settings
 # import get_stat_names 
 # import tensorflow as tf 
 from .forms import DropDownModelForm 
+from decimal import Decimal
 
 # Create your views here.
 base_dir = "Main/"
@@ -36,7 +36,7 @@ def about(request):
     return render(request, template_name)  
 
 def about_content(request):
-    template_name=base_dir + 'About-content.html'
+    template_name='Other/' + 'About-content.html'
     return render(request, template_name)
 
 def stat_manual(request): 
@@ -44,7 +44,7 @@ def stat_manual(request):
     return render(request, template_name)  
 
 def stat_manual_content(request):
-    template_name=base_dir + 'StatManual-content.html'
+    template_name='Other/' + 'StatManual-content.html'
     return render(request, template_name)
     
 def load_table(request, page_name):
@@ -62,22 +62,21 @@ def load_tool(request, page_name):
 def predict_as(request): 
     if request.method == "POST":
         selected_model = request.POST.get("model") 
-        simple_models = ['neural_network_simple', 'logistic_regression_simple', 'random_forest_simple'] 
-        stat_names = ['PPG', 'RPG', 'APG', 'SPG', 'BPG'] if selected_model in simple_models else get_stat_names() 
-        stat_vars = np.arange(len(stat_names)) 
+        stat_names = request.POST.getlist('stats') 
+        stat_vars = [] 
         for i in range(len(stat_names)):
-            value = request.POST.get(stat_names[i]) 
+            value = request.POST.get(stat_names[i])   
             try:
-                stat_vars[i] = float(value) 
+                stat_vars.append(float(value)) 
             except (TypeError, ValueError):
-                stat_vars[i] = get_avg(stat_names[i])
-        data = [stat_vars] 
-        prediction = make_prediction(data, selected_model) * 100 
-        output = ''  
-        output = f'All-Star Prediction: {prediction}%'
-        return JsonResponse({'prediction': output}) 
+                stat_vars.append(0) 
+        data = [stat_vars]
+        prediction = round(float(make_prediction(stat_names, data, selected_model) * 100), 4)
+        return JsonResponse({'prediction': prediction}) 
 
 def dropdown_form(request): 
     form = DropDownModelForm() 
     return render(request, )
 
+def react_app(request):
+    return render(request, 'index.html') 

@@ -105,9 +105,9 @@
             </div>  
         </div> 
     </div> 
-    
+    <img id="full-screen" onclick="fullScreen()" src="../../../static/Images/full-screen.png" class="full-screen-button">
     <div class = "center-item"> 
-        <iframe id = "contentFrame" src="{% url 'load_table' 'Averages_2024_25' %}" class="table-container">
+        <iframe id = "contentFrame" src="{% url 'load_table' 'Averages_2024_25' %}" class="frame">
         </iframe>   
     </div> 
 
@@ -144,7 +144,7 @@
             loadTable(stat_type); 
         }
 
-        {% comment %} function showOutputDropdown() { 
+       function showOutputDropdown() { 
             document.getElementById("output-content").classList.toggle("show"); 
         }
         function showSeasonDropdown() { 
@@ -152,7 +152,7 @@
         }
         function showTypeDropdown() { 
             document.getElementById("type-content").classList.toggle("show"); 
-        } {% endcomment %}
+        } 
     
         window.onclick = function(event) {
           handleClick(event);
@@ -169,6 +169,22 @@
                 }
             }
         }  
+
+        function fullScreen(){ 
+            container = document.getElementById('contentFrame'); 
+            if (container.classList.contains('full-screen')) {
+                //container.classList.remove('full-screen');
+                document.getElementById("contentFrame").className = "frame";   
+                document.getElementById("full-screen").style = "width:6vmin;height:6vmin;position:absolute;right:32px;"; 
+                document.getElementById("full-screen").innerHTML = "Fullscreen"; 
+                
+            }
+            else{
+                document.getElementById("contentFrame").className = "full-screen";
+                document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px;right:16px;z-index:3;margin-top:0px;width:6vmin;height:6vmin;"; 
+                document.getElementById("full-screen").innerHTML = "Exit Fullscreen"; 
+            }
+        }
     </script> 
 {% endblock %}
 

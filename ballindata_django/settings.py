@@ -102,7 +102,6 @@ CHANNEL_LAYERS = {
 
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3', 
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'ballbase',
         'USER': 'brandon',
@@ -151,6 +150,7 @@ STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
     BASE_DIR / "static", 
+    BASE_DIR / "react-frontend/build/static",
 ]
 
 # Default primary key field type

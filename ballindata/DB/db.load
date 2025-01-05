@@ -1,0 +1,4 @@
+load database
+from sqlite:///ballbase.db
+into postgresql://brandon:access@localhost/ballbase
+with data only, truncate;

@@ -54,7 +54,7 @@ body{
     position: relative; 
 }
 .dropdown-button{
-    background-color: rgb(71, 62, 62);
+    background-color: rgb(88, 88, 88);
     width: 100%;
     height: 4vmin;
     font-family:'calibri'; 
@@ -77,7 +77,7 @@ body{
     display: none; 
     position: absolute;
     min-width: 10vmin;
-    max-height: 12vmin;
+    max-height: 18vmin;
     width:100%;
     left:0;
     top:100%;
@@ -117,9 +117,10 @@ body{
     left: 0; 
     bottom: 0;
     width:100%;
+    height: 4vmin;
     background-color: rgb(35, 35, 35); 
     color: white; 
-    font-size: 2.5vmin; 
+    font-size: 3vmin; 
     position: fixed;
     font-family: 'calibri'; 
 }
@@ -137,24 +138,19 @@ body{
     overflow:hidden; 
     z-index:1;
 }
-.full-screen-button{
-    position: none; 
-    font-size: 2vmin; 
-    font-family: calibri; 
-    background-color: rgb(243, 148, 60); 
-    color: rgb(0, 0, 0); 
-    width: 100%; 
-    border:none;
-    opacity: 0.9; 
-    margin-top: 1vmin; 
-    z-index: 0;
-}
+.full-screen-button{ 
+    position:absolute;
+    right:32px;
+    width: 6vmin; 
+    height: 6vmin;
+    margin-top: 1vmin;
+    opacity: 0.9;
+    
+}   
 .full-screen-button:hover{
-    /* opacity: 0.2; */
-    background-color: rgb(243, 148, 60);
-    border-bottom: 4px;
-    border-color: black; 
-}
+    opacity: 0.5;
+    cursor: pointer;
+} 
 
 .header-box{
     display: flex;
@@ -168,7 +164,7 @@ body{
 .header-button{
     width: 33.333%;
     height: 15%;
-    font-size: 3vmin; 
+    font-size: 4vmin; 
     font-family: 'calibri'; 
     color: white; 
     background-color: rgb(35, 35, 35); 
@@ -222,16 +218,18 @@ body{
     font-family: calibri;
     font-size: 4vmin;  
     border-width: 2px; 
-    border-color: rgb(243, 148, 60); 
+    border-color: rgb(49, 35, 22); 
 }
 .input-label{
     font-weight: normal; 
     font-family: calibri; 
+    font-size: 5vmin;
     min-width: 2vmin; 
     width: 8%; 
     /* max-width: 10%; */
     color: rgb(255, 255, 255); 
     text-align: center;
+    margin-right: 10px;
 }
 .input-row{
     display:flex; 
@@ -240,20 +238,36 @@ body{
     font-family:calibri; 
     font-size:4min;   
 }
+.input-cover{
+    background-color: black;
+}
+.input-shell{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(40, 39, 39);
+    border-radius: 5px; 
+    border-color: rgb(0, 0, 0);
+    border-width: 1px;
+    border-style: solid;
+}
 .input-submit{
+    width: 30vmin;
+    height: 10vmin;
+    border-width: 0px;
+    border-radius: 5px;;
     font-family: calibri; 
     color: black; 
-    font-size: 4vmin; 
-    box-shadow: 1vmin; 
-    box-shadow: 1px 1px 1px purple;
+    font-size: 6vmin; 
+    font-weight: bold;
     background-color: rgb(243, 148, 60); 
 }
 .input-submit:hover{
     opacity: 0.9; 
 }
 .input-text-box{
-    width: 10%;  
-    max-width: 8vmin;
+    width: 18vmin;  
+    height: 6vmin;
+    font-size: 4vmin;
     border-width: 2px;
     border-color: rgb(243, 148, 60); 
     background-color: rgb(228, 116, 12); 
@@ -279,30 +293,41 @@ main{
     margin:1px;
     cursor:pointer;
 }
+.minus{
+    width:6vmin;
+    height:3vmin;
+    margin:4px;
+}
+.plus{
+    width:6vmin;
+    height:6vmin;
+    margin:4px;
+}
+
 .table-button{
     background-color: rgb(35, 35, 35);
     color: rgb(255, 255, 255); 
     width:15%;
     height:5vmin;
     font-family:'calibri'; 
-    font-size:2.5vmin;
+    font-size:3vmin;
     margin:1px;
     border-radius:5px;
     border-width: 2px;
-    border-color: rgb(243, 148, 60);
-    cursor:pointer;
+    border-color: rgb(103, 103, 103);
+    cursor:pointer; 
 }
 .table-button:hover{
     opacity:0.2;
 }
-.table-container{
+.frame{
     border-radius: 20px; 
     border-width: 1px; 
     border-color: rgb(243, 148, 60);
     width: 100%; 
     height: 63vh;
     margin: 5px;
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(0, 0, 0); 
     /* overflow-x: scroll;  */
     overflow-y: hidden; 
     overflow-x: hidden;
@@ -317,19 +342,21 @@ main{
     width:100%; 
     height: 60vh; 
     border-width:1px; 
+    border-radius:10px;
     border-color: rgb(243, 148, 60);
     overflow-x: auto; 
     overflow-y: auto;
     margin-top: 1vmin; 
 } 
-.tool-output{
-    background-color:rgb(243, 148, 60);
+.tool-output{ 
+    background-color:rgb(133, 133, 133);
+    border-radius: 10px;
     color: black; 
     font-weight: bold;
     width:50%;
-    height:15%;
+    height:15vmin;
     font-family:calibri;
-    size:1vmin;
+    font-size:6vmin;
     display:flex;
     align-items:center;
     justify-content:center;
@@ -429,7 +456,6 @@ thead th{
         left:0;
         top:100%;
         overflow: auto;
-        background-color: rgb(135, 135, 135);
         /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
         z-index: 3;
     }
@@ -450,8 +476,6 @@ thead th{
         bottom: 0;
         width:100%;
         height: 3vh;
-        background-color: rgb(35, 35, 35); 
-        color: rgb(255, 255, 255); 
         font-size: 4vmin; 
         position: fixed;
         font-family: 'calibri'; 
@@ -471,24 +495,18 @@ thead th{
         z-index:1;
     }
     .full-screen-button{ 
-        position: none;
-        font-size: 6vmin; 
-        font-family: calibri; 
-        background-color: rgb(243, 148, 60); 
-        border-left: 10px; 
-        border-right: 10px; 
-        border-color: black;
-        color: rgb(0, 0, 0); 
-        width: 100%; 
+        position:absolute;
+        right:32px;
+        width: 6vmin; 
+        height: 6vmin;
         margin-top: 2vmin;
         opacity: 0.9;
-    }    
+        
+    }   
     .full-screen-button:hover{
-        /* opacity: 0.2; */
-        background-color: rgb(243, 148, 60);
-        border-bottom: 4px;
-        border-color: black; 
-    }
+        opacity: 0.5;
+        cursor: pointer;
+    } 
     .header-box{
         display: flex;
         width: 100%;
@@ -503,27 +521,20 @@ thead th{
         height: 10%;
         font-size: 6vmin; 
         font-family: 'calibri'; 
-        color: white; 
-        background-color: rgb(35, 35, 35); 
         border-width: 0.1vmin; 
     }
     .header-text {
         text-align: center;
         font-size: 300%;
-        font-family: 'calibri', sans-serif;
-        color: rgb(0, 0, 0); 
+        font-family: 'calibri', sans-serif; 
         margin-top: 10%;
         margin-bottom: 0px; 
     }
     .home-button{
         display: flex; 
         align-items: center; 
-
-        background-color:rgb(35, 35, 35);
-        color: rgb(255, 255, 255);  
         border-radius:2vmin;
         border-width: 1px;
-        border-color: rgb(243, 148, 60);
         width:80%;
         height:20vmin;
         /* justify-content:center; */
@@ -537,28 +548,23 @@ thead th{
         display: flex; 
         bottom: 0px; 
         width:100%;
-        /* background-color: rgb(0, 0, 0);  */
         
     } 
     .iframe-header{ 
         display: flex; 
         top: 0px; 
         width:100%;
-        background-color: rgb(0, 0, 0); 
-        color: black;
         position: fixed; 
     }
     .input-dropdown{
         font-family: calibri;
         font-size: 4vmin;  
         border-width: 2px; 
-        border-color: rgb(243, 148, 60); 
     }
     .input-label{
         font-weight: normal; 
         font-family: calibri; 
         width: 15%; 
-        color: rgb(255, 255, 255); 
         text-align: center;
     }
     .input-row{
@@ -571,15 +577,12 @@ thead th{
     }
     .input-submit{
         font-family: calibri; 
-        color: black; 
         font-size: 6vmin; 
         box-shadow: 1vmin; 
-        background-color: rgb(243, 148, 60); 
     }
     .input-text-box{
-        width: 10vmin; 
+        width: 15vmin; 
         border: none; 
-        background-color: rgb(243, 148, 60); 
     }
     .logo-container {
         width:50%; 
@@ -599,8 +602,6 @@ thead th{
         cursor:pointer;
     } 
     .table-button{
-        background-color: rgb(35, 35, 35);
-        color: rgb(255, 255, 255); 
         width:100%;
         height:100%;
         font-family:'calibri'; 
@@ -608,16 +609,13 @@ thead th{
         margin:1px;
         border-radius:1vmin;
         border-width: 0px;
-        /* border-color: rgb(243, 148, 60); */
     }
     .table-container{
         border-radius: 2vmin; 
         border-width: 1px; 
-        border-color: rgb(243, 148, 60);
         width: 100%; 
         height: 50vh;
         margin: 5px;
-        background-color: rgb(0, 0, 0);
         /* overflow-x: scroll;  */
         overflow-y: hidden; 
         overflow-x: hidden;
@@ -626,19 +624,17 @@ thead th{
         width: 150vmin; 
         height: 5vmin; 
         border-width:1px; 
-        border-color: rgb(243, 148, 60);
     }
     .tool-container{
         width:100%; 
         height: 50vh;  
         border:none; 
+        border-radius: 10px;
         margin-top: 2vmin; 
         overflow-y: auto; 
         overflow-x: auto; 
     } 
     .tool-output{
-        background-color:rgb(243, 148, 60);
-        color: black;
         width:80%;
         height:15%;
         font-family:calibri;
@@ -650,7 +646,6 @@ thead th{
     thead th{
         position: sticky; 
         top:0;
-        background:#e28418;  
         z-index: 1;
     }
 }

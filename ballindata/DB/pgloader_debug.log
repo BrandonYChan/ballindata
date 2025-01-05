@@ -1,0 +1,27 @@
+pgloader version 3.6.7~devel
+compiled with SBCL 2.2.9.debian
+sb-impl::*default-external-format* :UTF-8
+tmpdir: #P"/tmp/pgloader/"
+2024-12-31T03:05:35.005488Z NOTICE Starting pgloader, log system is ready.
+2024-12-31T03:05:35.015946Z INFO Starting monitor
+2024-12-31T03:05:35.018582Z LOG pgloader version "3.6.7~devel"
+2024-12-31T03:05:35.018620Z INFO     SOURCE: "sqlite:/mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/ballbase.db"
+2024-12-31T03:05:35.018756Z INFO SOURCE URI: #<PGLOADER.SOURCE.SQLITE:SQLITE-CONNECTION sqlite:///mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/sqlite:/mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/ballbase.db {1005DAA0D3}>
+2024-12-31T03:05:35.018789Z INFO     TARGET: "postgresql://brandon:access@localhost/ballbase"
+2024-12-31T03:05:35.018859Z INFO TARGET URI: #<PGLOADER.PGSQL:PGSQL-CONNECTION pgsql://brandon@localhost:5432/ballbase {1005F7F933}>
+2024-12-31T03:05:35.018890Z DEBUG LOAD DATA FROM #<PGLOADER.SOURCE.SQLITE:SQLITE-CONNECTION sqlite:///mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/sqlite:/mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/ballbase.db {1005DAA0D3}>
+2024-12-31T03:05:35.222404Z DEBUG CONNECTED TO #<PGLOADER.PGSQL:PGSQL-CONNECTION pgsql://brandon@localhost:5432/ballbase {1005F7F933}>
+2024-12-31T03:05:35.222516Z DEBUG SET client_encoding TO 'utf8'
+2024-12-31T03:05:35.238140Z DEBUG SET application_name TO 'pgloader'
+2024-12-31T03:05:35.252262Z LOG Migrating from #<SQLITE-CONNECTION sqlite:///mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/sqlite:/mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/ballbase.db {1005DAA0D3}>
+2024-12-31T03:05:35.252355Z LOG Migrating into #<PGSQL-CONNECTION pgsql://brandon@localhost:5432/ballbase {1005F7F933}>
+2024-12-31T03:05:35.262351Z ERROR sqlite: Failed to open sqlite file #P"/mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/sqlite:/mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/ballbase.db": Could not open sqlite3 database /mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/sqlite:/mnt/c/Users/bchan/OneDrive/PersonalProjects/ballindata/ballindata/db/ballbase.db
+Code CANTOPEN: no message.
+2024-12-31T03:05:35.262431Z LOG report summary reset
+       table name     errors       read   imported      bytes      total time       read      write
+-----------------  ---------  ---------  ---------  ---------  --------------  ---------  ---------
+            fetch          0          0          0                     0.000s    
+  fetch meta data          0          0          0                     0.000s    
+-----------------  ---------  ---------  ---------  ---------  --------------  ---------  ---------
+-----------------  ---------  ---------  ---------  ---------  --------------  ---------  ---------
+2024-12-31T03:05:35.285209Z INFO Stopping monitor

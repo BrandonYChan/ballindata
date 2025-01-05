@@ -12,6 +12,7 @@ from django.conf import settings
 
 urlpatterns = [
     path('', views.home, name='Home'),
+    path('react/', views.react_app, name='react_app'), 
     path('analysis/', views.analysis, name = 'Analysis'), 
     path('stats/', views.stats, name = 'Stats'), 
     path('tools/', views.tools, name = 'Tools'), 

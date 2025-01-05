@@ -10,10 +10,10 @@
         </div>
     </div> 
     <div class="center-item">
-        <button id="full-screen" class="full-screen-button" onclick="fullScreen()"> Fullscreen </button> 
+        <img id="full-screen" onclick="fullScreen()" src="../../../static/Images/full-screen.png" class="full-screen-button">
     </div> 
     <div class="center-item"> 
-        <iframe id="analysisFrame" class="analysis-container" src="{% url 'load_analysis' 'star' %}"></iframe> 
+        <iframe id="analysisFrame" class="frame" src="{% url 'load_analysis' 'star' %}"></iframe> 
     </div> 
 
     <script>
@@ -21,15 +21,15 @@
             container = document.getElementById('analysisFrame'); 
             if (container.classList.contains('full-screen')) {
                 container.classList.remove('full-screen');
-                document.getElementById("analysisFrame").className = "analysis-container";  
-                document.getElementById("full-screen").style = "margin-top:1vmin;"; 
+                document.getElementById("analysisFrame").className = "frame";  
+                document.getElementById("full-screen").style = "width:6vmin;height:6vmin;position:absolute;right:32px;"; 
                 document.getElementById("full-screen").innerHTML = "Fullscreen"; 
                 
             }
             else{
                 document.getElementById("analysisFrame").className = "full-screen";
                 document.getElementById("analysisFrame").style = "none";
-                document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px; z-index:3; width:100%;margin-top:0px;"; 
+                document.getElementById("full-screen").style = "position:absolute; top:0px; border-top:0px;right:16px;z-index:3;margin-top:0px;width:6vmin;height:6vmin;"; 
                 document.getElementById("full-screen").innerHTML = "Exit Fullscreen"; 
             }
         }

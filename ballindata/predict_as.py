@@ -2,46 +2,33 @@ import pandas as pd, numpy as np, sklearn as sklm
 import sqlalchemy 
 from sklearn.linear_model import LogisticRegression, LinearRegression 
 import joblib 
-# import tensorflow as tf
-# from keras.models import load_model 
+import tensorflow as tf
+import keras 
+from keras.models import load_model 
 import os 
 from django.conf import settings 
 
-db_path = f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}" 
+# db_path = f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}" 
 
-engine = sqlalchemy.create_engine(db_path) 
-master = pd.read_sql("master_as", con=engine) 
-numeric_df = pd.read_sql("numeric_as", con=engine)  
+# engine = sqlalchemy.create_engine(db_path) 
+# master = pd.read_sql("master_as", con=engine) 
+# numeric_df = pd.read_sql("numeric_as", con=engine)  
 
-def make_prediction(data, selected_model): 
-    if selected_model == 'logistic_regression': 
-        lr = joblib.load(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/lr_model.pkl')) 
-        prediction = lr.predict(data)[0] 
+
+
+def make_prediction(names, data, selected_model): 
+    stat_string = '_'.join(names) 
+    
+    if selected_model == 'neural_network':
+        model = load_model(os.path.join(settings.BASE_DIR, f'ballindata/MLMODELS/allstar/nn/{stat_string}.keras')) 
+        prediction = model.predict(tf.convert_to_tensor(data))[0][0].astype('float64')         
+    elif selected_model == 'logistic_regression': 
+        model = joblib.load(os.path.join(settings.BASE_DIR, f'ballindata/MLMODELS/allstar/lr/{stat_string}.pkl'))
+        prediction = model.predict_proba(data)[0][1] 
     elif selected_model == 'random_forest': 
-        rf = joblib.load(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/rf_model.pkl')) 
-        prediction = rf.predict(data)[0] 
-    # elif selected_model == 'neural_network':
-    #     nn = load_model(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/seq_model.keras'))  
-    #     prediction = nn.predict(tf.convert_to_tensor(data))[0][0].astype('float64') 
-    # elif selected_model == 'neural_network_simple':
-    #     nn_simple = load_model(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/as_nn_tool.keras')) 
-        # prediction = round(nn_simple.predict(tf.convert_to_tensor(data))[0][0].astype('float64'), 4)  
-    elif selected_model == 'logistic_regression_simple': 
-        model = joblib.load(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/as_lr_tool.pkl'))
-        prediction = round(model.predict_proba(data)[0][1], 4) 
-    elif selected_model == 'random_forest_simple': 
-        model = joblib.load(os.path.join(settings.BASE_DIR, 'ballindata/MLMODELS/as_rf_tool.pkl')) 
-        prediction = round(model.predict_proba(data)[0][1], 4) 
+        model = joblib.load(os.path.join(settings.BASE_DIR, f'ballindata/MLMODELS/allstar/rf/{stat_string}.pkl')) 
+        prediction = model.predict_proba(data)[0][1]
     
-    
-    if isinstance(prediction, np.ndarray):
-        prediction = prediction.tolist()
-    
+    prediction = np.round(prediction, 4) 
     return prediction  
 
-def get_stat_names(): 
-    cols = numeric_df.drop('AS', axis=1).columns.tolist() 
-    return cols 
-
-def get_avg(stat_name): 
-    return np.mean(master[stat_name].dropna(axis=0)) 
