@@ -1,0 +1,49 @@
+version: '3.9'
+
+services:
+  django:
+    build:
+      context: .
+    container_name: django 
+    command: gunicorn ballindata_django.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/app/static
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+    environment:
+      - DEBUG=1
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
+      - DB_HOST=postgres 
+      - DB_PORT=5432
+      - DB_NAME=ballbase
+      - DB_USER=brandon
+      - DB_PASSWORD=access
+
+  postgres:
+    image: postgres:17.2
+    container_name: postgres
+    restart: always
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ballbase
+      POSTGRES_USER: brandon
+      POSTGRES_PASSWORD: access
+
+  nginx:
+      build:
+        context: ./nginx
+      container_name: nginx
+      ports:
+        - "80:80"
+      volumes:
+        - static_volume:/app/static
+      depends_on:
+        - django
+
+volumes:
+  static_volume:
+  postgres_data:
+

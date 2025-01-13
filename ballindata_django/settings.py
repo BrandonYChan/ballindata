@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-q%gwgvkoudtr)&0vf0g(2o+x0#l5dm)-$7x14x*=vz7sc3h#oy
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS =  ['192.168.2.95', 'localhost', '127.0.0.1', '192.168.2.24', '142.198.75.175', 'ballindata.com', 'www.ballindata.com'] 
+ALLOWED_HOSTS =  ['192.168.2.95', 'localhost', '127.0.0.1', '192.168.2.24', 'ballindata.com', 'www.ballindata.com'] 
 
 
 # Application definition
@@ -100,14 +100,26 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'ballbase',
+#         'USER': 'brandon',
+#         'PASSWORD': 'access',
+#         'HOST': 'localhost',
+#         'POST': '5432',  
+#     }
+# }
+import os 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ballbase',
-        'USER': 'brandon',
-        'PASSWORD': 'access',
-        'HOST': 'localhost',
-        'POST': '5432',  
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
@@ -146,11 +158,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATICFILES_DIRS = [
-    BASE_DIR / "static", 
-    BASE_DIR / "react-frontend/build/static",
+    os.path.join(BASE_DIR, 'static'), 
+    # BASE_DIR / "react-frontend/build/static",
 ]
 
 # Default primary key field type

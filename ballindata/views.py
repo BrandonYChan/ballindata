@@ -78,5 +78,5 @@ def dropdown_form(request):
     form = DropDownModelForm() 
     return render(request, )
 
-def react_app(request):
-    return render(request, 'index.html') 
+# def react_app(request):
+#     return render(request, 'index.html') 
