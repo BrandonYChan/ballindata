@@ -24,7 +24,6 @@ SECRET_KEY = 'django-insecure-q%gwgvkoudtr)&0vf0g(2o+x0#l5dm)-$7x14x*=vz7sc3h#oy
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS =  ['192.168.2.95', 'localhost', '127.0.0.1', '192.168.2.24', 'ballindata.com', 'www.ballindata.com'] 
 
 
@@ -79,7 +78,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-            'debug':True,
+            'debug':False,
         },
     },
 ]
@@ -106,7 +105,7 @@ CHANNEL_LAYERS = {
 #         'NAME': 'ballbase',
 #         'USER': 'brandon',
 #         'PASSWORD': 'access',
-#         'HOST': 'localhost',
+#         'HOST': 'postgres', #localhost',
 #         'POST': '5432',  
 #     }
 # }
@@ -159,11 +158,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = '/app/staticfiles'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'), 
-    # BASE_DIR / "react-frontend/build/static",
+    BASE_DIR / "static", 
 ]
 
 # Default primary key field type

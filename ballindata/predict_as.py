@@ -8,14 +8,6 @@ from keras.models import load_model
 import os 
 from django.conf import settings 
 
-# db_path = f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}" 
-
-# engine = sqlalchemy.create_engine(db_path) 
-# master = pd.read_sql("master_as", con=engine) 
-# numeric_df = pd.read_sql("numeric_as", con=engine)  
-
-
-
 def make_prediction(names, data, selected_model): 
     stat_string = '_'.join(names) 
     

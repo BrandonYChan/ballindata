@@ -3,16 +3,16 @@ services:
     build:
       context: .
     container_name: django 
-    command: gunicorn --reload ballindata_django.wsgi:application --bind 0.0.0.0:8000
+    command: bash -c "python manage.py collectstatic --noinput && gunicorn --reload ballindata_django.wsgi:application --bind 0.0.0.0:8000"    
     volumes:
       - .:/app:cached
-      - static_volume:/app/static
+      - static_volume:/app/staticfiles
     ports:
       - "8000:8000"
     depends_on:
       - postgres
     environment:
-      - DEBUG=1
+      - DEBUG=0
       - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1]
       - DB_HOST=postgres
       - DB_PORT=5432
@@ -38,7 +38,7 @@ services:
       ports:
         - "80:80"
       volumes:
-        - static_volume:/app/static
+        - static_volume:/app/staticfiles
       depends_on:
         - django
 

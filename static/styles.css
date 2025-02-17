@@ -18,7 +18,7 @@ a{
     border-color: rgb(243, 148, 60);
 }
 body{
-    background-color: rgb(228, 116, 12); 
+    background-color: rgb(242, 89, 13); 
 }
 .button-container{ 
     display: flex; 
@@ -41,8 +41,8 @@ body{
     min-width: 10vmin;
     max-height: 20vmin;
     overflow: auto;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    background-color: rgb(243, 148, 60);
+    box-shadow: 0px 8px 16px 0px rgb(0, 0, 0);
+    background-color: rgb(242, 89, 13);
     width: 100%; 
     z-index: 1;
 }
@@ -50,11 +50,10 @@ body{
     width:33.33%;
     margin-inline: 2px;
     cursor:pointer; 
-    background-color: rgb(228, 116, 12);
     position: relative; 
 }
 .dropdown-button{
-    background-color: rgb(88, 88, 88);
+    background-color: rgb(0, 0, 0);
     width: 100%;
     height: 4vmin;
     font-family:'calibri'; 
@@ -82,9 +81,8 @@ body{
     left:0;
     top:100%;
     overflow: auto;
-    background-color: rgb(243, 148, 60); 
+    background-color: rgb(242, 89, 13); 
     z-index: 1;
-    /* box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); */
 } 
 .dropdown-content.show{
     display: block; 
@@ -314,7 +312,7 @@ main{
     margin:1px;
     border-radius:5px;
     border-width: 2px;
-    border-color: rgb(103, 103, 103);
+    border-color: rgb(0, 0, 0);
     cursor:pointer; 
 }
 .table-button:hover{
@@ -389,9 +387,9 @@ thead th{
         border-width: 2px; 
         border-color: rgb(243, 148, 60);
     }
-    body{
+    /* body{
         background-color: rgb(228, 116, 12); 
-    }
+    } */
     .button-container{
         /* display: flex;  */
         /* flex-direction: column; */
@@ -412,8 +410,8 @@ thead th{
         min-width: 10vmin;
         max-height: 20vmin;
         overflow: auto;
-        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-        background-color: rgb(243, 148, 60);
+        /* box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.482);
+        background-color: rgb(243, 148, 60); */
         width: 100%; 
         z-index: 1;
     }
@@ -421,11 +419,11 @@ thead th{
         width:33.33%;
         margin-inline: 2px;
         cursor:pointer; 
-        background-color: rgb(228, 116, 12);
+        /* background-color: rgb(228, 116, 12); */
         position: relative; 
     }
     .dropdown-button{
-        background-color: rgb(71, 62, 62);
+        /* background-color: rgb(71, 62, 62); */
         width: 100%;
         height: 10vmin;
         font-family:'calibri'; 
@@ -580,10 +578,10 @@ thead th{
         font-size: 6vmin; 
         box-shadow: 1vmin; 
     }
-    .input-text-box{
+    /* .input-text-box{
         width: 15vmin; 
         border: none; 
-    }
+    } */
     .logo-container {
         width:50%; 
         height:auto; 

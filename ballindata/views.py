@@ -60,10 +60,12 @@ def load_tool(request, page_name):
     return render(request, template_name)
 
 def predict_as(request): 
-    if request.method == "POST":
-        selected_model = request.POST.get("model") 
+    if request.method == 'POST':
+        selected_model = request.POST.get('model') 
         stat_names = request.POST.getlist('stats') 
         stat_vars = [] 
+        
+        # if request.POST.get('player-select') == '':
         for i in range(len(stat_names)):
             value = request.POST.get(stat_names[i])   
             try:
@@ -72,6 +74,20 @@ def predict_as(request):
                 stat_vars.append(0) 
         data = [stat_vars]
         prediction = round(float(make_prediction(stat_names, data, selected_model) * 100), 4)
+        # else:            
+        #     observation = request.POST.get('player-select')
+        #     player = observation[:observation.find('(')].rstrip('')
+        #     season = observation[observation.find('(')+1:observation.find(')')].replace('-', '_')
+            
+        #     engine = sqlalchemy.create_engine(f"sqlite:///{os.path.join(settings.BASE_DIR, 'ballindata/DB/ballbase.db')}") 
+        #     df = pd.read_sql("master_"+season, con=engine)
+        #     # df_values = df.loc[df['PLAYER']== player,[s.upper() for s in stat_names]]
+        #     # print(repr(player.strip()).lower())
+        #     # print(str(player).decode('ascii', errors='ignore')=='LeBron James')
+        #     # print(df_values)
+        #     prediction = player + ' ' + season
+        #     # prediction = df_values['PPG']
+
         return JsonResponse({'prediction': prediction}) 
 
 def dropdown_form(request): 
