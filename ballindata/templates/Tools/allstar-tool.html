@@ -55,9 +55,13 @@
             <br> 
             <div class="center-item"> 
                 <select name="model" id="model", style="font-family:calibri;font-size:5vmin;border-radius:5px;"> 
-                    <option value="neural_network"> Neural Network </option> 
-                    <option value="logistic_regression"> Logistic Regression </option> 
-                    <option value="random_forest"> Random Forest </option> 
+                    <option value="mlp"> Neural Network (MLP) </option> 
+                    <option value="lr"> Logistic Regression </option> 
+                    <option value="rf"> Random Forest </option> 
+                    <option value="knn"> K-Nearest Neighbours </option>
+                    <option value="nb"> Naive Bayes </option>
+                    <option value="svm"> Support Vector Machine </option>
+                    <option value="ab"> Adaboost </option> 
                 </select> 
                 <input type="submit" value="Submit" class="input-submit"> 
             </div> 
@@ -96,6 +100,8 @@
 
         document.getElementById("tool-output").textContent = `All-Star Probability ${result.prediction}%`; 
         pred = parseFloat(result.prediction); 
+
+        console.log(result);
 
         // Colour prediction output box 
         if (pred > 50){
