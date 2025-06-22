@@ -61,7 +61,7 @@
                     <option value="knn"> K-Nearest Neighbours </option>
                     <option value="nb"> Naive Bayes </option>
                     <option value="svm"> Support Vector Machine </option>
-                    <option value="ab"> Adaboost </option> 
+                    <option value="ab"> AdaBoost </option> 
                 </select> 
                 <input type="submit" value="Submit" class="input-submit"> 
             </div> 
@@ -81,27 +81,28 @@
     document.getElementById('prediction-form').onsubmit = async function(event){
         event.preventDefault(); 
         const formData = new FormData(this); 
-
         // Add selected stats 
         for(let stat in stats){
             if(stats[stat] === 1){
                 formData.append('stats', stat);
             }
         }
-
+        const csrftoken = '{{ csrf_token }}';
         // Send to view 
         const response = await fetch("{% url 'predict_allstar' %}", {
             method: 'POST', 
+            headers: {
+                'X-CSRFToken': csrftoken
+            },
             body: formData 
         }); 
 
         // Receive prediction as JSON 
         const result = await response.json();  
+        console.log(result);
 
         document.getElementById("tool-output").textContent = `All-Star Probability ${result.prediction}%`; 
         pred = parseFloat(result.prediction); 
-
-        console.log(result);
 
         // Colour prediction output box 
         if (pred > 50){
@@ -114,17 +115,14 @@
             document.getElementById("tool-output").style.backgroundColor="rgb(222, 243, 162)";
         }
     }
-
     function removeOrAdd(stat, id){
         if (document.getElementById(id).className === "minus"){
             // Switch to plus logo 
             document.getElementById(id).src = "../../../static/Images/add.png"; 
             document.getElementById(id).className = "plus"; 
-
             // Remove stat 
             stats[stat]=0;  
             console.log(`${id}: ${stats[id]}`);   
-            
             // Hide input textbox 
             document.getElementById(stat).style.width = "0px"; 
             document.getElementById(stat).style.zIndex =-1; 
@@ -133,11 +131,9 @@
             // Switch to minus logo 
             document.getElementById(id).src = "../../../static/Images/minus.png";   
             document.getElementById(id).className = "minus"; 
-
             // Add stat 
             stats[stat]=1;
             console.log(`${id}: ${stats[id]}`);
-
             // Show input textbox 
             document.getElementById(stat).style.width = "18vmin"; 
             document.getElementById(stat).style.zIndex = 1; 
