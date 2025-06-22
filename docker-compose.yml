@@ -2,7 +2,7 @@ services:
   django:
     build:
       context: .
-    container_name: django 
+    container_name: django
     command: bash -c "python manage.py collectstatic --noinput && gunicorn --reload ballindata_django.wsgi:application --bind 0.0.0.0:8000"    
     volumes:
       - .:/app:cached
@@ -13,7 +13,7 @@ services:
       - postgres
     environment:
       - DEBUG=0
-      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 [::1] ballindata.com www.ballindata.com 192.168.2.24
+      - DJANGO_ALLOWED_HOSTS=localhost 127.0.0.1 ballindata.com www.ballindata.com
       - DB_HOST=postgres
       - DB_PORT=5432
       - DB_NAME=ballbase
@@ -37,8 +37,10 @@ services:
       container_name: nginx
       ports:
         - "80:80"
+        - "443:443"
       volumes:
         - static_volume:/app/staticfiles
+        - /etc/letsencrypt:/etc/letsencrypt:ro
       depends_on:
         - django
 
