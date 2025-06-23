@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-q%gwgvkoudtr)&0vf0g(2o+x0#l5dm)-$7x14x*=vz7sc3h#oy'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS =  ['192.168.2.95', 'localhost', '127.0.0.1', '192.168.2.24', 'ballindata.com', 'www.ballindata.com'] 
 
 
@@ -40,10 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_plotly_dash.apps.DjangoPlotlyDashConfig',
     'channels',
-    # 'dpd_static_support',  
-    # 'rest_framework', 
-    # 'ballindata',
-    # 'chart',    
 ]
 
 MIDDLEWARE = [
@@ -54,8 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'django_plotly_dash.middleware.BaseMiddleware',  # Add this line
-    'django_plotly_dash.middleware.ExternalRedirectionMiddleware',  # Add this line
+    'django_plotly_dash.middleware.BaseMiddleware',  # plotly dash
+    'django_plotly_dash.middleware.ExternalRedirectionMiddleware',  # plotly dash
 ]
 PLOTLY_COMPONENTS = [
     'dash_core_components',
@@ -157,8 +153,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = '/app/staticfiles'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/app/staticfiles'
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = [
     BASE_DIR / "static", 
