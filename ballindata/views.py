@@ -12,6 +12,7 @@ from django.conf import settings
 # import tensorflow as tf 
 from .forms import DropDownModelForm 
 from decimal import Decimal
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 base_dir = "Main/"
@@ -55,10 +56,20 @@ def load_analysis(request, page_name):
     template_name = f"Analyses/{page_name}.html" 
     return render(request, template_name)
 
-def load_tool(request, page_name):
-    template_name = f"Tools/{page_name}.html" 
-    return render(request, template_name)
+from django.template.loader import engines
 
+def load_tool(request, page_name):
+    template_name = f"Tools/{page_name}.html"
+    django_engine = engines['django']  # force use of Django's template engine
+    template = django_engine.get_template(template_name)
+    return HttpResponse(template.render({'request': request}))
+
+# def load_tool(request, page_name):
+#     template_name = f"Tools/{page_name}.html" 
+#     return render(request, template_name)
+
+
+@csrf_exempt
 def predict_as(request): 
     if request.method == 'POST':
         selected_model = request.POST.get('model') 
